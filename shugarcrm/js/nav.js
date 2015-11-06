@@ -437,44 +437,47 @@ var Tree = (function () {
      };
 
      //Special function to get the guide level for Navbar - custom for each section
-     Tree.prototype.getJunctionForPath = function(path){
+     Tree.prototype.getJunctionForPath = function(path, treeData){
         var pathArr = path.substr(1).split("/");
-        var path2 = path;
+        var path2 = path + "/";
 
         //New method to get the Guide = 1 level
         var branch;
-        do while (branch.guide == 1 || searchPath == "/"){
-            searchPath = searchPath.substr(0, searchPath.lastIndexOf("/"));
-            branch = NavTree.findKey({ "href" : searchPath }, treeData);
-        }
-        return searchPath;
+        do {
+            path2 = path2.substr(0, path2.lastIndexOf("/"));
+            branch = NavTree.findKey({ "href" : path2 }, treeData);
+        }while (branch.guide == 0 || path2.length > 0);
 
-        if(pathArr[0] == "Get_Started"){
-
-        }else if(pathArr[0] == "Documentation"){
-            if(pathArr[1] == "Sugar_Versions"){
-                if(pathArr.length >= 5){
-                    path2 = this.getPathUntilDepth(pathArr, 5);
-                }
-            }else if(pathArr[1] == "Mobile_Solutions"){
-                if(pathArr.length > 3){
-                    path2 = this.getPathUntilDepth(pathArr, 3);
-                }
-            }else if(pathArr[1] == "Plug-ins"){
-                if(pathArr.length > 3){
-                    path2 = this.getPathUntilDepth(pathArr, 3);
-                }
-            }else if(pathArr[1] == "Sugar_Developer"){
-                if(pathArr.length > 3){
-                    path2 = this.getPathUntilDepth(pathArr, 3);
-                }
-            }
-        }else if(pathArr[0] == "Knowledge_Base"){
-            if(pathArr.length > 2){
-                path2 = this.getPathUntilDepth(pathArr, 2);
-            }
-        }
+        if(path2 == "")
+            return path;
         return path2;
+
+        // if(pathArr[0] == "Get_Started"){
+
+        // }else if(pathArr[0] == "Documentation"){
+        //     if(pathArr[1] == "Sugar_Versions"){
+        //         if(pathArr.length >= 5){
+        //             path2 = this.getPathUntilDepth(pathArr, 5);
+        //         }
+        //     }else if(pathArr[1] == "Mobile_Solutions"){
+        //         if(pathArr.length > 3){
+        //             path2 = this.getPathUntilDepth(pathArr, 3);
+        //         }
+        //     }else if(pathArr[1] == "Plug-ins"){
+        //         if(pathArr.length > 3){
+        //             path2 = this.getPathUntilDepth(pathArr, 3);
+        //         }
+        //     }else if(pathArr[1] == "Sugar_Developer"){
+        //         if(pathArr.length > 3){
+        //             path2 = this.getPathUntilDepth(pathArr, 3);
+        //         }
+        //     }
+        // }else if(pathArr[0] == "Knowledge_Base"){
+        //     if(pathArr.length > 2){
+        //         path2 = this.getPathUntilDepth(pathArr, 2);
+        //     }
+        // }
+        // return path2;
      };
 
      Tree.prototype.setTreeTitle = function(title){
@@ -558,13 +561,13 @@ var Tree = (function () {
                 if(window.location.href.indexOf("http")>-1)
                     searchPath = "/"+path;
                 else
-                    searchPath = "";
+                    searchPath = "/Documentation/Sugar_Versions/7.6/Ent/Application_Guide/Getting_Started";
 
                 var treeData = tree;
 
                 NavTree.sitemapjs = tree;
 
-                searchPath = NavTree.getJunctionForPath(searchPath);
+                searchPath = NavTree.getJunctionForPath(searchPath, treeData);
                 var branch = NavTree.findKey({ "href" : searchPath }, treeData);
 
                 //Get top-level sibling nodes
