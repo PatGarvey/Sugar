@@ -446,7 +446,7 @@ var Tree = (function () {
         do {
             path2 = path2.substr(0, path2.lastIndexOf("/"));
             branch = NavTree.findKey({ "href" : path2 }, treeData);
-        }while (branch.guide == 0 && path2.length > 0);
+        }while (branch !== undefined && branch.guide == 0 && path2.length > 0);
 
         if(path2 == "")
             return path;
