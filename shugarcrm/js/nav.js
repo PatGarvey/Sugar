@@ -436,10 +436,19 @@ var Tree = (function () {
         }
      };
 
-     //Special function to get the max deep level for Navbar - custom for each section
+     //Special function to get the guide level for Navbar - custom for each section
      Tree.prototype.getJunctionForPath = function(path){
         var pathArr = path.substr(1).split("/");
         var path2 = path;
+
+        //New method to get the Guide = 1 level
+        var branch;
+        do while (branch.guide == 1 || searchPath == "/"){
+            searchPath = searchPath.substr(0, searchPath.lastIndexOf("/"));
+            branch = NavTree.findKey({ "href" : searchPath }, treeData);
+        }
+        return searchPath;
+
         if(pathArr[0] == "Get_Started"){
 
         }else if(pathArr[0] == "Documentation"){
