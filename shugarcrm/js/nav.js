@@ -480,6 +480,10 @@ var Tree = (function () {
         // return path2;
      };
 
+     Tree.prototype.sitemap = function(title){
+
+     };
+
      Tree.prototype.setTreeTitle = function(title){
 
      };
@@ -610,3 +614,7 @@ var Tree = (function () {
 }
 });
 })();
+
+//dummy function for sitemap.js
+var sitemap = function(title){
+};
