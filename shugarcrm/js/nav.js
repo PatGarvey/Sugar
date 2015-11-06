@@ -480,7 +480,64 @@ var Tree = (function () {
         // return path2;
      };
 
-     Tree.prototype.sitemap = function(title){
+     Tree.prototype.create = function(tree) {
+         var url = (window.location.href);
+         var path = url.replace(/^https?:\/\/[^\/]+\//i, "").replace(/\/$/, "");
+         if(path.indexOf("/") == 0)
+             path = path.substring(1);
+         var pathArr = path.split("/");
+
+         var searchPath = "";
+         // https://support.sugarcrm.com/Documentation/Sugar_Versions/7.6/Ent/Application_Guide/Getting_Started
+
+
+         if(window.location.href.indexOf("http")>-1)
+             searchPath = "/"+path;
+         else
+             searchPath = "/Documentation/Sugar_Versions/7.6/Ent/Application_Guide/Getting_Started";
+
+         var treeData = tree;
+
+         NavTree.sitemapjs = tree;
+
+         searchPath = NavTree.getJunctionForPath(searchPath, treeData);
+         var branch = NavTree.findKey({ "href" : searchPath }, treeData);
+
+         //Get top-level sibling nodes
+         var searchPathParent = searchPath.substring(0, searchPath.lastIndexOf("/"));
+         
+         if(branch){
+             // if(branch )
+             NavTree.addMainContent(branch, "/"+path);
+             // NavTree.addToc(branch, "/"+path, NavTree.getHeaderTags());
+             // NavTree.setTreeTitle(branch.name);
+             NavTree.setData(branch);
+             var content = document.querySelector('#tree-navigation-content .widget-body');
+             NavTree.init(url);
+             NavTree.setHover();
+
+             $('#tree-title').html("");
+             var branchParent = NavTree.findKey({ "href" : searchPathParent }, treeData);
+             if(branchParent){
+                 var siblingList = NavTree.createSiblingList(branchParent.children, branch.name);
+                 if(siblingList){
+                     $('#tree-title').append(siblingList);
+
+                     //Add prev & next paging links
+                     if(branch.paging == 1)
+                         NavTree.addPrevNextPageLinks();
+                 }
+             }
+             if($('#tree-title').html() == ""){
+                 $('#tree-title').addClass("hidden");
+             }
+             // $('#tree-title').append(siblingList);
+
+             $('body').scrollspy({ target: '#toc-body' });
+             $('[data-spy="scroll"]').each(function () {
+               var $spy = $(this).scrollspy('refresh');
+           })
+         }
 
      };
 
@@ -549,72 +606,18 @@ var Tree = (function () {
                 url: 'http://support.sugarcrm.com/assets/js/scripts/sitemap.js',
                 dataType: "jsonp",
                 jsonp: false,
-                jsonpCallback: 'sitemap'
+                jsonpCallback: 'this.done'
             }).done(function (tree) {
-
-                var url = getUrl(window.location.href);
-                var path = url.replace(/^https?:\/\/[^\/]+\//i, "").replace(/\/$/, "");
-                if(path.indexOf("/") == 0)
-                    path = path.substring(1);
-                var pathArr = path.split("/");
-
-                var searchPath = "";
-                // https://support.sugarcrm.com/Documentation/Sugar_Versions/7.6/Ent/Application_Guide/Getting_Started
-
-
-                if(window.location.href.indexOf("http")>-1)
-                    searchPath = "/"+path;
-                else
-                    searchPath = "/Documentation/Sugar_Versions/7.6/Ent/Application_Guide/Getting_Started";
-
-                var treeData = tree;
-
-                NavTree.sitemapjs = tree;
-
-                searchPath = NavTree.getJunctionForPath(searchPath, treeData);
-                var branch = NavTree.findKey({ "href" : searchPath }, treeData);
-
-                //Get top-level sibling nodes
-                var searchPathParent = searchPath.substring(0, searchPath.lastIndexOf("/"));
-                
-                if(branch){
-                    // if(branch )
-                    NavTree.addMainContent(branch, "/"+path);
-                    // NavTree.addToc(branch, "/"+path, NavTree.getHeaderTags());
-                    // NavTree.setTreeTitle(branch.name);
-                    NavTree.setData(branch);
-                    var content = document.querySelector('#tree-navigation-content .widget-body');
-                    NavTree.init(url);
-                    NavTree.setHover();
-
-                    $('#tree-title').html("");
-                    var branchParent = NavTree.findKey({ "href" : searchPathParent }, treeData);
-                    if(branchParent){
-                        var siblingList = NavTree.createSiblingList(branchParent.children, branch.name);
-                        if(siblingList){
-                            $('#tree-title').append(siblingList);
-
-                            //Add prev & next paging links
-                            if(branch.paging == 1)
-                                NavTree.addPrevNextPageLinks();
-                        }
-                    }
-                    if($('#tree-title').html() == ""){
-                        $('#tree-title').addClass("hidden");
-                    }
-                    // $('#tree-title').append(siblingList);
-
-                    $('body').scrollspy({ target: '#toc-body' });
-                    $('[data-spy="scroll"]').each(function () {
-                      var $spy = $(this).scrollspy('refresh');
-                  })
-                }
-
-            });
+                NavTree.create(data);
+            })
+            
 }
 });
 })();
 
 //dummy function for sitemap.js
-var sitemap = function(title){
+var sitemap = function(data){
+
+    NavTree.create(data);
+
 };
