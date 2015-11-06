@@ -29,7 +29,7 @@ var Search = (function() {
       throw new Error('JS template engine doesn\'t found');
     }
 
-    this.$results.html(tmpl('search_results', {
+    this.$results.html(tmpl('gcse-sugar', {
       data: this.data,
       params: {
         query: this.query,
