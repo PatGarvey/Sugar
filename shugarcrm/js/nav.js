@@ -507,6 +507,30 @@ var Tree = (function () {
          var searchPathParent = searchPath.substring(0, searchPath.lastIndexOf("/"));
          
          if(branch){
+
+            //Hide tree if configured by disable_nav
+            if(branch.disable_nav == 1){
+                return;
+            }
+
+            var widgets = document.getElementById('navmenu');
+            var nav = document.createElement('div');
+            nav.setAttribute('id', 'tree-navigation');
+            nav.innerHTML = '' + '<div class="widget" id="tree-navigation-content">' +
+            '    <div class="widget-body" id="toc-body">' +
+            '        <p>Loading...</p>' +
+            '    </div>' +
+            '</div>';
+            widgets.insertBefore(nav, widgets.firstChild);
+
+
+            //Add page title widget
+            var navTitle = document.createElement('div');
+            navTitle.setAttribute('id', 'tree-title');
+            // navTitle.setAttribute('class', 'strong');
+            // navTitle.innerHTML = "Page title";
+            widgets.insertBefore(navTitle, widgets.firstChild);    
+
              // if(branch )
              NavTree.addMainContent(branch, "/"+path);
              // NavTree.addToc(branch, "/"+path, NavTree.getHeaderTags());
@@ -552,7 +576,7 @@ var Tree = (function () {
  (function () {
     $(document).ready(function () {
         // Add to widgets
-        var widgets = document.getElementById('navmenu');
+        
 
         var getUrl = function (url) {
             var URL = url.replace("http://", "").replace("https://", "");
@@ -573,27 +597,6 @@ var Tree = (function () {
             return URL;
         };
 
-        if (widgets) {
-
-
-
-            var nav = document.createElement('div');
-            nav.setAttribute('id', 'tree-navigation');
-            nav.innerHTML = '' + '<div class="widget" id="tree-navigation-content">' +
-            '    <div class="widget-body" id="toc-body">' +
-            '        <p>Loading...</p>' +
-            '    </div>' +
-            '</div>';
-            widgets.insertBefore(nav, widgets.firstChild);
-
-
-            //Add page title widget
-            var navTitle = document.createElement('div');
-            navTitle.setAttribute('id', 'tree-title');
-            // navTitle.setAttribute('class', 'strong');
-            // navTitle.innerHTML = "Page title";
-            widgets.insertBefore(navTitle, widgets.firstChild);    
-
             // var root = getUrl(window.location.href);
             // NavTree.setData(tree);
             // var content = document.querySelector('#tree-navigation-content .widget-body');
@@ -611,7 +614,6 @@ var Tree = (function () {
                 NavTree.create(data);
             })
             
-}
 });
 })();
 
