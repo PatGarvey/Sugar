@@ -11,65 +11,16 @@ $(document).ready(function () {
 	//Select ULTIMATE RIGHT AWAY - HEADER
 	$("#searchForm select[name='tag1']").selectpicker('val', 'Ultimate');
 
-
-	//Documentation START
-	var edition = "Ultimate";
-	var version = "7.6";
 	var url = window.location.href.replace("http://", "").replace("https://", "");
 	var path = window.location.href.replace(/^https?:\/\/[^\/]+\//i, "").replace(/\/$/, "");
-	if(path.indexOf("Documentation/Sugar_Versions") > -1){
-
-		if( path == "Documentation/Sugar_Versions"){
-			$(".content-heading").append(editionVersions);
-			var url = "/Documentation/Sugar_Versions/"+version+"/"+Utils.getAbbreviatedEdition(edition)+"/";
-			loadEditionVersion(url);
-
-		}
-		if(path.split("/").length == 4)
-			Utils.transformTableToDivs();		
-	}
-	
-	//Edition Button Bar CLICK
-	$("#groupEdition > .btn").click(function(){
-	    edition = $(this).html();
-	    if(edition == "Community Edition"){
-	    	version = "6.5";
-	    	$("#groupVersion > .btn").removeClass("active");
-	    	$("#groupVersion button:nth-child(4)").addClass("active").siblings().addClass("disabled");
-	    }else{
-	    	$("#groupVersion > .btn").removeClass("disabled");
-	    }
-
-	    $("#editionTitle").html(version+" "+edition);
-	});
-
 
 	//Documentation PAGES
-	if(window.location.href.indexOf("Documentation/Sugar_Versions/")>-1){
-		//Version Button Bar CLICK
-		$("#groupVersion > .btn").click(function(){
-			if($(this).hasClass("disabled"))
-				return;
-		    version = $(this).html();
-		    $("#editionTitle").html(version+" "+edition);
-		});
-		//Button Bar CLICK - ALL
-		$(".btn-group > .btn").click(function(){
-			if($(this).hasClass("disabled"))
-				return;
-		    $(this).addClass("active").siblings().removeClass("active");
-		    $("#okButton").addClass("btn-primary");
-
-		    //Only for demo
-		    $("#sugar-on-ultimate .row").toggleClass("hidden");
-
-		    //AJAX call to get site
-		    var url = "/Documentation/Sugar_Versions/"+version+"/"+Utils.getAbbreviatedEdition(edition)+"/";
-		    loadEditionVersion(url);
-		});
+	if(path.indexOf("Documentation/Sugar_Versions") > -1){
+		//SUGAR VERSIONS controller 
+		loadScript(BASE_URL+"js/sugar-versions-controller.js");
 	}else{
 		//INDEX PAGE - load external script
-		loadScript(BASE_URL+"js/index.js");
+		loadScript(BASE_URL+"js/index-controller.js");
 	}
 });
 
