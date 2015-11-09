@@ -1,4 +1,5 @@
 
+var path = window.location.href.replace(/^https?:\/\/[^\/]+\//i, "").replace(/\/$/, "");
 var edition = "Ultimate";
 var version = "7.6";
 
