@@ -508,10 +508,13 @@ var Tree = (function () {
          
          if(branch){
 
-            //Hide tree if configured by disable_nav
-            if(branch.disable_nav == 1){
+            //Don't render tree if configured by disable_nav = 1
+            if(branch.disable_nav == 1 || this.tree != null){
                 return;
             }
+
+            var widgetsParent = $("section.content");
+            widgetsParent.append('<div class="navmenu navmenu-default navmenu-fixed-left" id="navmenu" data-spy="affix" data-offset-top="240"></div>');
 
             var widgets = document.getElementById('navmenu');
             var nav = document.createElement('div');
@@ -523,6 +526,7 @@ var Tree = (function () {
             '</div>';
             widgets.insertBefore(nav, widgets.firstChild);
 
+            $('section.content').addClass("has-navmenu");
 
             //Add page title widget
             var navTitle = document.createElement('div');
