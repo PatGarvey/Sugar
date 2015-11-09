@@ -41,26 +41,6 @@ function loadScript(url, callback)
     head.appendChild(script);
 }
 
-var editionVersions = '<section class="active-filters">'+
-     '<div>'+
-      '   <label>Edition:</label>'+
-      '   <div class="btn-group btn-group-sm" role="groupEdition" id="groupEdition">'+
-      '     <button type="button" class="btn btn-default active">Ultimate</button>'+
-      '    	<button type="button" class="btn btn-default">Enterprise</button>'+
-      '     <button type="button" class="btn btn-default">Corporate</button>'+
-      '     <button type="button" class="btn btn-default">Professional</button>'+
-      '     <button type="button" class="btn btn-default">Community Edition</button>'+
-      '   </div>'+
-      '   &nbsp;'+
-      '   <label>Version:</label>'+
-      '   <div class="btn-group btn-group-sm" role="groupVersion" id="groupVersion">'+
-      '     <button type="button" class="btn btn-default active">7.6</button>'+
-      '     <button type="button" class="btn btn-default">7.5</button>'+
-      '     <button type="button" class="btn btn-default">6.7</button>'+
-      '     <button type="button" class="btn btn-default">6.5</button>'+
-      '   </div>'+
-     '</div>  '+
-   '</section>';
 
 var indexTemplate ='<div class="tabs" id="indexTabs"><h1></h1><ul class="nav nav-tabs"> '+            
 '</ul>         </div><div class="tab-content"></div> ';
