@@ -53,6 +53,6 @@ $(".btn-group > .btn").click(function(){
 
 function loadEditionVersion(url){
 	$( ".content-body" ).load( url + " .content-body", function() {
-  		Utils.transformTableToDivs();
+  		// Utils.transformTableToDivs();
    	});
 }
