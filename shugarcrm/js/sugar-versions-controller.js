@@ -3,7 +3,7 @@ var path = window.location.href.replace(/^https?:\/\/[^\/]+\//i, "").replace(/\/
 var edition = "Ultimate";
 var version = "7.6";
 
-if( path == "Documentation/Sugar_Versions"){
+if( path == "Documentation"){
 	$(".content-heading").append(editionVersions);
 	var url = "/Documentation/Sugar_Versions/"+version+"/"+Utils.getAbbreviatedEdition(edition)+"/";
 	loadEditionVersion(url);

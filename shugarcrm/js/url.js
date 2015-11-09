@@ -15,7 +15,7 @@ $(document).ready(function () {
 	var path = window.location.href.replace(/^https?:\/\/[^\/]+\//i, "").replace(/\/$/, "");
 
 	//Documentation PAGES
-	if(path.indexOf("Documentation/Sugar_Versions") > -1){
+	if(path.indexOf("Documentation") > -1){
 		//SUGAR VERSIONS controller 
 		loadScript(BASE_URL+"js/sugar-versions-controller.js");
 	}else{
