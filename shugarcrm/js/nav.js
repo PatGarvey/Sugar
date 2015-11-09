@@ -512,11 +512,12 @@ var Tree = (function () {
             if(branch.disable_nav == 1 || this.tree != null){
                 return;
             }
-
-            var widgetsParent = $("section.content");
-            widgetsParent.append('<div class="navmenu navmenu-default navmenu-fixed-left" id="navmenu" data-spy="affix" data-offset-top="240"></div>');
-
             var widgets = document.getElementById('navmenu');
+            if(widgets == null){
+                var widgetsParent = $("section.content");
+                widgetsParent.append('<div class="navmenu navmenu-default navmenu-fixed-left" id="navmenu" data-spy="affix" data-offset-top="240"></div>');
+                widgets = document.getElementById('navmenu');
+            }
             var nav = document.createElement('div');
             nav.setAttribute('id', 'tree-navigation');
             nav.innerHTML = '' + '<div class="widget" id="tree-navigation-content">' +
