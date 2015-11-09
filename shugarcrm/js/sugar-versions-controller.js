@@ -49,3 +49,9 @@ $(".btn-group > .btn").click(function(){
     var url = "/Documentation/Sugar_Versions/"+version+"/"+Utils.getAbbreviatedEdition(edition)+"/";
     loadEditionVersion(url);
 });
+
+function loadEditionVersion(url){
+	$( ".content-body" ).load( url + " .content-body", function() {
+  		Utils.transformTableToDivs();
+   	});
+}

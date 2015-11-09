@@ -24,12 +24,6 @@ $(document).ready(function () {
 	}
 });
 
-function loadEditionVersion(url){
-	$( ".content-body" ).load( url + " .content-body", function() {
-  		Utils.transformTableToDivs();
-   	});
-}
-
 function loadScript(url, callback)
 {
     // Adding the script tag to the head as suggested before
