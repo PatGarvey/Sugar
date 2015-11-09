@@ -481,7 +481,7 @@ var Tree = (function () {
      };
 
      Tree.prototype.create = function(tree) {
-         var url = (window.location.href);
+         var url = NavTree.getUrl(window.location.href);
          var path = url.replace(/^https?:\/\/[^\/]+\//i, "").replace(/\/$/, "");
          if(path.indexOf("/") == 0)
              path = path.substring(1);
@@ -569,20 +569,7 @@ var Tree = (function () {
 
      };
 
-     Tree.prototype.setTreeTitle = function(title){
-
-     };
-     return Tree;
- })();
-
- NavTree = new Tree();
-
- (function () {
-    $(document).ready(function () {
-        // Add to widgets
-        
-
-        var getUrl = function (url) {
+     Tree.prototype.getUrl = function(url){
             var URL = url.replace("http://", "").replace("https://", "");
             URL = URL.substr(URL.search(/\//), 1000);
             // disregard hash
@@ -599,7 +586,20 @@ var Tree = (function () {
                 return URL.replace(loc[0], '');
             }
             return URL;
-        };
+     };
+
+     Tree.prototype.setTreeTitle = function(title){
+
+     };
+     return Tree;
+ })();
+
+ NavTree = new Tree();
+
+ (function () {
+    $(document).ready(function () {
+        // Add to widgets
+        
 
             // var root = getUrl(window.location.href);
             // NavTree.setData(tree);
