@@ -1,0 +1,32 @@
+{{template:8f8e9ac5-5d83-9bbe-9d95-563a466f5333}}
+<!-- Header.html -->
+
+<h1>{{title}}</h1>
+
+<section class="active-filters">
+<div>
+    <label>Edition:</label>
+    <div class="btn-group btn-group-sm" role="groupEdition" id="groupEdition">
+      <button type="button" class="btn btn-default active">Ultimate</button>
+     	<button type="button" class="btn btn-default">Enterprise</button>
+      <button type="button" class="btn btn-default">Corporate</button>
+      <button type="button" class="btn btn-default">Professional</button>
+      <button type="button" class="btn btn-default">Community Edition</button>
+    </div>
+    &nbsp;
+    <label>Version:</label>
+    <div class="btn-group btn-group-sm" role="groupVersion" id="groupVersion">
+      <button type="button" class="btn btn-default active">7.6</button>
+      <button type="button" class="btn btn-default">7.5</button>
+      <button type="button" class="btn btn-default">6.7</button>
+      <button type="button" class="btn btn-default">6.5</button>
+    </div>
+</div>  
+</section>
+
+<div class="content-children">
+  {{children}}
+</div>
+
+<!-- Footer.html -->
+{{template:80b69e0c-b60c-a34b-11fb-563a464a9923}}
