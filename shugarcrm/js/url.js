@@ -2,6 +2,9 @@ var BASE_URL = "http://scarlett.sugarcrm.com/Sugar/shugarcrm/";
 
 $(document).ready(function () {
 
+	//LOGIN BUTTON
+	$("#navbar a.btn").attr("href","https://www.sugarcrm.com/sso?redirect="+window.location.href);
+
 	//Change SEARCH FORM ACTION - HEADER
 	$("section.filters form").change(function() {
 	  var action = $(this).val();
