@@ -19,7 +19,7 @@ $(document).ready(function () {
 	  	sitemap = tree;
 	  });
 
-	  // $(".content-body").html("");
+	  $(".content-body .content").html("");
 	  $(".content-body").append("<div class='section-holder'></div>");
 
 	  //All Button Bar Click
