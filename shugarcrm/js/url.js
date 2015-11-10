@@ -18,7 +18,7 @@ $(document).ready(function () {
 	if(path.indexOf("Documentation") > -1){
 		//SUGAR VERSIONS controller 
 		loadScript(BASE_URL+"js/sugar-versions-controller.js");
-	}else{
+	}else if(path.indexOf("Get_Started") > -1){
 		//INDEX PAGE - load external script
 		loadScript(BASE_URL+"js/index-controller.js");
 	}
