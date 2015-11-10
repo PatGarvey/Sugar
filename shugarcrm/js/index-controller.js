@@ -17,8 +17,9 @@ $(document).ready(function () {
 	  });
 
 	  //Initial HACK - REMOVE!!!
-	  $(".content-section .accordion li:nth-child(1)").siblings().remove();
-	  $(".content-section .accordion").append("<div class='section-holder'></div>");
+	  // $(".content-section .accordion li:nth-child(1)").siblings().remove();
+	  $(".content-body").html("");
+	  $(".content-body").append("<div class='section-holder'></div>");
 
 	  //All Button Bar Click
 	  $(".btn-group > .btn").click(function(){
@@ -87,3 +88,7 @@ $(document).ready(function () {
 	      });
 	  }
 });
+
+var indexTemplate ='<div class="tabs" id="indexTabs"><h1></h1><ul class="nav nav-tabs"> '+            
+'</ul>         </div><div class="tab-content"></div> ';
+

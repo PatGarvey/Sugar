@@ -41,7 +41,3 @@ function loadScript(url, callback)
     head.appendChild(script);
 }
 
-
-var indexTemplate ='<div class="tabs" id="indexTabs"><h1></h1><ul class="nav nav-tabs"> '+            
-'</ul>         </div><div class="tab-content"></div> ';
-
