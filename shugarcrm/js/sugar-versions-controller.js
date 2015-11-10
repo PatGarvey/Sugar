@@ -52,7 +52,7 @@ $(".btn-group > .btn").click(function(){
 });
 
 function loadEditionVersion(url){
-	$( ".content-body" ).load( url + " .content-body", function() {
+	$( ".content-children" ).load( url + " .content-body", function() {
   		// Utils.transformTableToDivs();
    	});
 }
