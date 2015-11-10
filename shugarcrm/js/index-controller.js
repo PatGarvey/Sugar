@@ -16,9 +16,8 @@ $(document).ready(function () {
 	  	sitemap = tree;
 	  });
 
-	  //Initial HACK - REMOVE!!!
-	  // $(".content-section .accordion li:nth-child(1)").siblings().remove();
 	  $(".content-body").html("");
+	  $(".content-body").append(buttonBarTemplate);
 	  $(".content-body").append("<div class='section-holder'></div>");
 
 	  //All Button Bar Click
@@ -91,4 +90,24 @@ $(document).ready(function () {
 
 var indexTemplate ='<div class="tabs" id="indexTabs"><h1></h1><ul class="nav nav-tabs"> '+            
 '</ul>         </div><div class="tab-content"></div> ';
+
+var buttonBarTemplate = '<div class="container">'+
+        '<label class="pull-left">User type:</label>'+
+        '<div class="btn-group btn-group-sm pull-left" role="groupUserType" id="groupUserType">'+
+        '  <button type="button" class="btn btn-default">End Users</button>'+
+        '  <button type="button" class="btn btn-default">Developers</button>'+
+        '  <button type="button" class="btn btn-default">Administrators</button>'+
+        '</div>'+
+        '&nbsp;'+
+        '<div id="editionHolder" class="hidden pull-left m-l-lg">'+
+        '  <label>Edition:</label>'+
+        '  <div class="btn-group btn-group-sm" role="groupEdition" id="groupEdition">'+
+        '    <button type="button" class="btn btn-default">Ultimate</button>'+
+        '    <button type="button" class="btn btn-default">Enterprise</button>'+
+        '    <button type="button" class="btn btn-default">Corporate</button>'+
+        '    <button type="button" class="btn btn-default">Professional</button>'+
+        '    <button type="button" class="btn btn-default">Community Edition</button>'+
+        '  </div>'+
+        '</div>'+
+      '</div>';
 
