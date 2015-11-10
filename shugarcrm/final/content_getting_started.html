@@ -1,0 +1,43 @@
+{{template:8f8e9ac5-5d83-9bbe-9d95-563a466f5333}}
+<!-- Header.html -->
+
+<h1>{{title}}</h1>
+
+<section class="active-filters">
+  <div class="container">
+    <label class="pull-left">User type:</label>
+    <div class="btn-group btn-group-sm pull-left" role="groupUserType" id="groupUserType">
+      <button type="button" class="btn btn-default">End Users</button>
+      <button type="button" class="btn btn-default">Administrators</button>
+      <button type="button" class="btn btn-default">Developers</button>
+    </div>
+    &nbsp;
+    <div id="editionHolder" class="hidden pull-left m-l-lg">
+      <label>Edition:</label>
+      <div class="btn-group btn-group-sm" role="groupEdition" id="groupEdition">
+        <button type="button" class="btn btn-default">Ultimate</button>
+        <button type="button" class="btn btn-default">Enterprise</button>
+        <button type="button" class="btn btn-default">Corporate</button>
+        <button type="button" class="btn btn-default">Professional</button>
+        <button type="button" class="btn btn-default">Community Edition</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content">
+  <div class="container">
+    <div class="tabs" id="indexTabs">
+      <h1></h1>
+      <ul class="nav nav-tabs"></ul>         
+    </div>
+    <div class="tab-content"></div>
+  </div>
+</section>
+
+<div class="content-children">
+  {{children}}
+</div>
+
+<!-- Footer.html -->
+{{template:80b69e0c-b60c-a34b-11fb-563a464a9923}}
