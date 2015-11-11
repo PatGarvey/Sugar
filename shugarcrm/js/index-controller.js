@@ -22,6 +22,11 @@ $(document).ready(function () {
 	  $(".content-body .content").html("");
 	  $(".content-body").append("<div class='section-holder'></div>");
 
+	  //Auto select Sugar Ultimate for End Users
+	  $("#groupUserType > .btn:nth-child(1)").click();
+	  $("#editionHolder > .btn:nth-child(1)").click();
+
+
 	  //All Button Bar Click
 	  $(".btn-group > .btn").click(function(){
 	  	  $(this).addClass("active").siblings().removeClass("active");
