@@ -18,6 +18,9 @@ $(document).ready(function () {
 	  }).done(function (tree) {
 	  	// var branch = Utils.findKey({href:"/Get_Started/End_Users/Community_Edition"}, data);
 	  	sitemap = tree;
+	  	//Auto select Sugar Ultimate for End Users
+	  	$("#groupUserType > .btn:nth-child(1)").click();
+	  	
 	  });
 
 	  $(".content-body .content").html("");
@@ -54,10 +57,6 @@ $(document).ready(function () {
 	      $(".section-holder" ).empty();	
 	      showTabs(edition);	
 	  });
-
-	  //Auto select Sugar Ultimate for End Users
-	  $("#groupUserType > .btn:nth-child(1)").click();
-	  
 
 	  //Show the tabs from the Button Bar Selection
 	  function showTabs(tabs){
