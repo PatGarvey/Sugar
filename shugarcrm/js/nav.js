@@ -214,12 +214,13 @@ var Tree = (function () {
             status = 'down';
             this.status = 'closed';
             active = "active";
+            $(li).addClass("active");
         }
         else status = 'right';
         var root = this.cleanName(item.href);
         var ulid = this.getId(root);
         var span = document.createElement('span');
-        span.setAttribute('class', 'glyphicon glyphicon-chevron-' + status + ' pointer '+active);
+        span.setAttribute('class', 'glyphicon glyphicon-chevron-' + status + ' pointer');
         span.setAttribute('data-toggle', 'collapse');
         span.setAttribute('href', '#' + ulid);
         span.setAttribute('onclick', "javascript:NavTree.open('" + item.href + "');");
@@ -229,7 +230,6 @@ var Tree = (function () {
         a.innerHTML = item.name;
 
         var ul = this.ul(root, status);
-
         li.appendChild(span);
         li.appendChild(a);
         li.appendChild(ul);
@@ -496,7 +496,7 @@ var Tree = (function () {
          if(window.location.href.indexOf("http")>-1)
              searchPath = "/"+path;
          else
-             searchPath = "/Documentation/Sugar_Versions/7.6/Ent/Application_Guide/Getting_Started";
+             searchPath = "/Documentation/Sugar_Versions/7.6/Ent/Application_Guide/User_Interface";
 
          var treeData = tree;
 
