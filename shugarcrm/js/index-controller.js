@@ -22,10 +22,6 @@ $(document).ready(function () {
 	  $(".content-body .content").html("");
 	  $(".content-body").append("<div class='section-holder'></div>");
 
-	  //Auto select Sugar Ultimate for End Users
-	  $("#groupUserType > .btn:nth-child(1)").click();
-	  $("#editionHolder > .btn:nth-child(1)").click();
-
 
 	  //All Button Bar Click
 	  $(".btn-group > .btn").click(function(){
@@ -52,6 +48,10 @@ $(document).ready(function () {
 	      $(".section-holder" ).empty();	
 	      showTabs(edition);	
 	  });
+
+	  //Auto select Sugar Ultimate for End Users
+	  $("#groupUserType > .btn:nth-child(1)").click();
+	  $("#editionHolder > .btn:nth-child(1)").click();
 
 	  //Show the tabs from the Button Bar Selection
 	  function showTabs(tabs){
