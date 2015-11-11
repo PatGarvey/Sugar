@@ -42,7 +42,7 @@ $(document).ready(function () {
 	      	$("#groupEdition > .btn").removeClass("active");
 
 	      	if(firstRun){
-	      		$("#editionHolder > .btn:nth-child(1)").click();
+	      		$("#groupEdition > .btn:nth-child(1)").click();
 	      		firstRun = false;
 	      	}
 	      }
