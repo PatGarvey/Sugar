@@ -3,6 +3,7 @@ $(document).ready(function () {
 
 	  var edition;
 	  var sitemap;
+	  var firstRun = true;
 
 	  var indexTemplate ='<div class="tabs" id="indexTabs"><h1></h1><ul class="nav nav-tabs"> '+            
 	  '</ul>         </div><div class="tab-content"></div> ';
@@ -39,6 +40,11 @@ $(document).ready(function () {
 	  	  }else{
 	      	$('#editionHolder').removeClass("hidden");
 	      	$("#groupEdition > .btn").removeClass("active");
+
+	      	if(firstRun){
+	      		$("#editionHolder > .btn:nth-child(1)").click();
+	      		firstRun = false;
+	      	}
 	      }
 	  });
 
@@ -51,7 +57,7 @@ $(document).ready(function () {
 
 	  //Auto select Sugar Ultimate for End Users
 	  $("#groupUserType > .btn:nth-child(1)").click();
-	  $("#editionHolder > .btn:nth-child(1)").click();
+	  
 
 	  //Show the tabs from the Button Bar Selection
 	  function showTabs(tabs){
