@@ -564,7 +564,8 @@ var Tree = (function () {
              }
              // $('#tree-title').append(siblingList);
 
-             $('section.content-body').scrollspy({ target: '#toc-body' });
+             // $('section.content-body').addClass
+             $('section.content').scrollspy({ target: '#toc-body' });
              $('[data-spy="scroll"]').each(function () {
                var $spy = $(this).scrollspy('refresh');
            })
