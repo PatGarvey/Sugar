@@ -17,6 +17,10 @@ $(document).ready(function () {
 	var url = window.location.href.replace("http://", "").replace("https://", "");
 	var path = window.location.href.replace(/^https?:\/\/[^\/]+\//i, "").replace(/\/$/, "");
 
+	//Remove BreadCrumbs from level 1 pages
+	if(path.split("/").length == 1)
+		$("section.content-heading").html("");
+
 	//Documentation PAGES
 	if(path.indexOf("Documentation") > -1){
 		//SUGAR VERSIONS controller 
