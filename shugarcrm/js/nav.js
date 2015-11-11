@@ -215,6 +215,7 @@ var Tree = (function () {
             this.status = 'closed';
             active = "active";
             $(li).addClass("active");
+            $(li).addClass("activeRed");
         }
         else status = 'right';
         var root = this.cleanName(item.href);
