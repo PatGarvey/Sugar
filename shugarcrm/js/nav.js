@@ -209,15 +209,17 @@ var Tree = (function () {
     };
     Tree.prototype.getTitleHtml = function (li, item) {
         var status;
+        var active = "";
         if (this.status == 'open') {
             status = 'down';
             this.status = 'closed';
+            active = "active";
         }
         else status = 'right';
         var root = this.cleanName(item.href);
         var ulid = this.getId(root);
         var span = document.createElement('span');
-        span.setAttribute('class', 'glyphicon glyphicon-chevron-' + status + ' pointer');
+        span.setAttribute('class', 'glyphicon glyphicon-chevron-' + status + ' pointer '+active);
         span.setAttribute('data-toggle', 'collapse');
         span.setAttribute('href', '#' + ulid);
         span.setAttribute('onclick', "javascript:NavTree.open('" + item.href + "');");
