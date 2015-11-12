@@ -280,8 +280,10 @@ var Tree = (function () {
         if(data.guide == 1)
             mainContent = data.children;
             //this.getHeaderTags();
-        else
+        else{
             this.getLowestLevelLinks();
+            this.addToc(data, path, mainContent);
+        }
         // if(pathArr[0] == "Get_Started"){
 
         // }else if(pathArr[0] == "Documentation"){
@@ -296,7 +298,7 @@ var Tree = (function () {
             
         // }
 
-        this.addToc(data, path, mainContent);
+        
      }; 
      Tree.prototype.addToc = function(data, path, tocChildren){
         if (data["href"] == path){
