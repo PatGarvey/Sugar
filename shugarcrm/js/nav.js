@@ -275,20 +275,21 @@ var Tree = (function () {
         //     this.addToc(data, path, this.getLowestLevelLinks());
         // }   
 
-        var mainContent = this.getLowestLevelLinks();
-        if(pathArr[0] == "Get_Started"){
+        var mainContent;
+        mainContent = (data.guide == 1) ? this.getHeaderTags() : this.getLowestLevelLinks();
+        // if(pathArr[0] == "Get_Started"){
 
-        }else if(pathArr[0] == "Documentation"){
-            if(pathArr[1] == "Sugar_Versions"){
-                if(pathArr.length > 5){
-                    mainContent = this.getHeaderTags();
-                }
-            }else if(pathArr[1] == "Installable_Connectors"){
-                mainContent = this.getHeaderTags();
-            }
-        }else if(pathArr[0] == "Knowledge_Base"){
+        // }else if(pathArr[0] == "Documentation"){
+        //     if(pathArr[1] == "Sugar_Versions"){
+        //         if(pathArr.length > 4){
+        //             mainContent = this.getHeaderTags();
+        //         }
+        //     }else if(pathArr[1] == "Installable_Connectors"){
+        //         mainContent = this.getHeaderTags();
+        //     }
+        // }else if(pathArr[0] == "Knowledge_Base"){
             
-        }
+        // }
 
         this.addToc(data, path, mainContent);
      }; 
@@ -497,7 +498,7 @@ var Tree = (function () {
          if(window.location.href.indexOf("http")>-1)
              searchPath = "/"+path;
          else
-             searchPath = "/Documentation/Sugar_Versions/7.6/Ent/Application_Guide/User_Interface";
+             searchPath = "/Documentation/Sugar_Versions/7.6/Ent/Application_Guide";
 
          var treeData = tree;
 
