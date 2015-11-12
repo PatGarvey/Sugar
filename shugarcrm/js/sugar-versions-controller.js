@@ -9,7 +9,7 @@ $(document).ready(function () {
 
 
   if( path == "Documentation"){
-    $(".content-heading").append(editionVersions());
+    // $(".content-heading").append(editionVersions());
     var url = "/Documentation/Sugar_Versions/"+version+"/"+Utils.getAbbreviatedEdition(edition)+"/";
 	// loadEditionVersion(url);
 
