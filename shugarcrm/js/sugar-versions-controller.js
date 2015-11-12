@@ -37,10 +37,45 @@ $(".btn-group > .btn").click(function(){
     loadEditionVersion(url);
   });
 
-function loadEditionVersion(url){
-	$( ".content-children" ).load( url + " .content-body", function() {
+function loadEditionVersion(version, edition){
+	// $( ".content-children" ).load( url + " .content-body", function() {
   		// Utils.transformTableToDivs();
+    // });
+
+$(".content-children").html("");
+
+
+  $.getJSON("http://scarlett.sugarcrm.com/public/index.php/api/v1/documentation?version="+version+"&edition="+edition, function(data){
+    var cols = [];
+    $.each( data, function( key, val ) {
+      var items = [];
+      $.each(val, function( key, val){
+        items.push("<li><a href="+val+">"+key+"</a></li>");
+      });
+      var ul = $("<ul />", {
+        "class":"plain-list",
+        html : items.join("")
+      });
+      cols.push( '<div class="col-sm-6 col-md-3 content-col"><h2>'+key+'</h2>'+ul.html()+'</div>' );
     });
+
+    var div = $( "<div />", {
+      "class": "btn-group btn-group-sm",
+      "role":"groupVersion",
+      "id":"groupVersion",
+      html: cols.join( "" )
+    }).appendTo($(".content-children"));
+    // <div class="col-sm-6 col-md-3 content-col">
+    //                       <h2>User Guides</h2>
+    //                       <ul class="plain-list">
+    //                         <li><a href="">Application</a></li>
+    //                         <li><a href="">Application Guide Portal</a></li>
+    //                         <li><a href="">Portal User Guide Plug-ins</a></li>
+    //                         <li><a href="">Plug-ins Documentation Mobile</a></li>
+    //                         <li><a href="">SugarCRM Mobile</a></li>
+    //                       </ul>
+    //                     </div>
+  });
 }
 
 //Load Editions & Versions from API
@@ -92,7 +127,7 @@ var addVersions = function(parent){
 
            $("#editionTitle").html(version+" "+edition);
            var url = "/Documentation/Sugar_Versions/"+version+"/"+Utils.getAbbreviatedEdition(edition)+"/";
-           loadEditionVersion(url);
+           loadEditionVersion(version, edition);
         });
 
       });
@@ -104,7 +139,7 @@ var addVersions = function(parent){
 }
 
 
-var versions = $('<section class="active-filters"><div><label>Edition:</label></div></section>');
+var versions = $('<section class="active-filters"><div><label>Edition:</label></div></section><div class="content-children"></div>');
 $(".content-body").html("");
 $(".content-body").append(versions);
 addVersions(versions);
