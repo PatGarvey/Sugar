@@ -3,32 +3,34 @@ var path = window.location.href.replace(/^https?:\/\/[^\/]+\//i, "").replace(/\/
 var edition = "Ultimate";
 var version = "7.6";
 
-	
-if( path == "Documentation"){
-  $(".content-heading").append(editionVersions());
-	var url = "/Documentation/Sugar_Versions/"+version+"/"+Utils.getAbbreviatedEdition(edition)+"/";
+
+$(document).ready(function () {
+  // body...
+
+
+  if( path == "Documentation"){
+    $(".content-heading").append(editionVersions());
+    var url = "/Documentation/Sugar_Versions/"+version+"/"+Utils.getAbbreviatedEdition(edition)+"/";
 	// loadEditionVersion(url);
 
-
-
-
-}
-if(path.split("/").length == 4)
-	Utils.transformTableToDivs();		
+  }
+  if(path.split("/").length == 4)
+    Utils.transformTableToDivs();   
+});
 
 
 //Edition Button Bar CLICK
 $("#groupEdition > .btn").click(function(){
-    edition = $(this).html();
-    if(edition == "Community Edition"){
-    	version = "6.5";
-    	$("#groupVersion > .btn").removeClass("active");
-    	$("#groupVersion button:nth-child(4)").addClass("active").siblings().addClass("disabled");
-    }else{
-    	$("#groupVersion > .btn").removeClass("disabled");
-    }
+  edition = $(this).html();
+  if(edition == "Community Edition"){
+   version = "6.5";
+   $("#groupVersion > .btn").removeClass("active");
+   $("#groupVersion button:nth-child(4)").addClass("active").siblings().addClass("disabled");
+ }else{
+   $("#groupVersion > .btn").removeClass("disabled");
+ }
 
-    $("#editionTitle").html(version+" "+edition);
+ $("#editionTitle").html(version+" "+edition);
 });
 
 
@@ -37,15 +39,15 @@ $("#groupEdition > .btn").click(function(){
 $("#groupVersion > .btn").click(function(){
 	if($(this).hasClass("disabled"))
 		return;
-    version = $(this).html();
-    $("#editionTitle").html(version+" "+edition);
+  version = $(this).html();
+  $("#editionTitle").html(version+" "+edition);
 });
 //Button Bar CLICK - ALL
 $(".btn-group > .btn").click(function(){
 	if($(this).hasClass("disabled"))
 		return;
-    $(this).addClass("active").siblings().removeClass("active");
-    $("#okButton").addClass("btn-primary");
+  $(this).addClass("active").siblings().removeClass("active");
+  $("#okButton").addClass("btn-primary");
 
     //Only for demo
     $("#sugar-on-ultimate .row").toggleClass("hidden");
@@ -53,12 +55,12 @@ $(".btn-group > .btn").click(function(){
     //AJAX call to get site
     var url = "/Documentation/Sugar_Versions/"+version+"/"+Utils.getAbbreviatedEdition(edition)+"/";
     loadEditionVersion(url);
-});
+  });
 
 function loadEditionVersion(url){
 	$( ".content-children" ).load( url + " .content-body", function() {
   		// Utils.transformTableToDivs();
-   	});
+    });
 }
 
 //Load Editions & Versions from API
@@ -68,7 +70,7 @@ var addVersions = function(parent){
     $.each( data, function( key, val ) {
       items.push( '<button type="button" class="btn btn-default active">' + val + "</button>" );
     });
-   
+
     var div = $( "<div />", {
       "class": "btn-group btn-group-sm",
       "role":"groupEdition",
@@ -89,7 +91,7 @@ var createButtons = function(data){
   
 
 }
-var versions = $('<section class="active-filters"><div></div></section>');
+var versions = $('<section class="active-filters"><div><label>Edition:</label></div></section>');
 $(".content-body").html("");
 $(".content-body").append(versions);
 addVersions(versions);
