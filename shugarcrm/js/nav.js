@@ -276,7 +276,12 @@ var Tree = (function () {
         // }   
 
         var mainContent;
-        mainContent = (data.guide == 1) ? this.getHeaderTags() : this.getLowestLevelLinks();
+        //Is Guide
+        if(data.guide == 1)
+            mainContent = data.children;
+            //this.getHeaderTags();
+        else
+            this.getLowestLevelLinks();
         // if(pathArr[0] == "Get_Started"){
 
         // }else if(pathArr[0] == "Documentation"){
