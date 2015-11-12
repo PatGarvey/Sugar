@@ -63,7 +63,7 @@ var Tree = (function () {
                 var child = children[i];
                 var found = this.find(child, clean);
                 if (found) {
-                    this.status = 'open';
+                    this.status = (found.children.length > 0) ? 'open' : 'closed';
                     if (this.match(child, clean)) {
                         child = this.bold(child);
                     }
@@ -505,7 +505,7 @@ var Tree = (function () {
          if(window.location.href.indexOf("http")>-1)
              searchPath = "/"+path;
          else
-             searchPath = "/Documentation/Sugar_Versions/7.6/Ent/Application_Guide";
+             searchPath = "/Documentation/Sugar_Versions/7.6/Ent/Application_Guide/User_Interface";
 
          var treeData = tree;
 
