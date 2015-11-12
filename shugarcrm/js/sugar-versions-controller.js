@@ -19,29 +19,9 @@ $(document).ready(function () {
 });
 
 
-//Edition Button Bar CLICK
-$("#groupEdition > .btn").click(function(){
-  edition = $(this).html();
-  if(edition == "Community Edition"){
-   version = "6.5";
-   $("#groupVersion > .btn").removeClass("active");
-   $("#groupVersion button:nth-child(4)").addClass("active").siblings().addClass("disabled");
- }else{
-   $("#groupVersion > .btn").removeClass("disabled");
- }
-
- $("#editionTitle").html(version+" "+edition);
-});
 
 
-// if(window.location.href.indexOf("Documentation/Sugar_Versions/")>-1){
-//Version Button Bar CLICK
-$("#groupVersion > .btn").click(function(){
-	if($(this).hasClass("disabled"))
-		return;
-  version = $(this).html();
-  $("#editionTitle").html(version+" "+edition);
-});
+
 //Button Bar CLICK - ALL
 $(".btn-group > .btn").click(function(){
 	if($(this).hasClass("disabled"))
@@ -68,29 +48,62 @@ var addVersions = function(parent){
   $.getJSON( "http://scarlett.sugarcrm.com/public/index.php/api/v1/versions", function( data ) {
     var items = [];
     $.each( data, function( key, val ) {
-      items.push( '<button type="button" class="btn btn-default active">' + val + "</button>" );
+      items.push( '<button type="button" class="btn btn-default">' + val + "</button>" );
     });
 
     var div = $( "<div />", {
       "class": "btn-group btn-group-sm",
-      "role":"groupEdition",
+      "role":"groupVersion",
       "id":"groupVersion",
       html: items.join( "" )
     }).appendTo(parent);
+
+    // if(window.location.href.indexOf("Documentation/Sugar_Versions/")>-1){
+    //Version Button Bar CLICK
+    $("#groupVersion > .btn").click(function(){
+      if($(this).hasClass("disabled"))
+        return;
+      version = $(this).html();
+      $("#editionTitle").html(version+" "+edition);
+
+      $.getJSON( "http://scarlett.sugarcrm.com/public/index.php/api/v1/editions/"+version, function( data ) {
+        var items = [];
+        $.each( data, function( key, val ) {
+          items.push( '<button type="button" class="btn btn-default">' + val + "</button>" );
+        });
+
+        var div = $( "<div />", {
+          "class": "btn-group btn-group-sm",
+          "role":"groupEdition",
+          "id":"groupEdition",
+          html: items.join( "" )
+        }).appendTo(parent);
+
+        //Edition Button Bar CLICK
+        $("#groupEdition > .btn").click(function(){
+          edition = $(this).html();
+          if(edition == "Community Edition"){
+           version = "6.5";
+           $("#groupVersion > .btn").removeClass("active");
+           $("#groupVersion button:nth-child(4)").addClass("active").siblings().addClass("disabled");
+           }else{
+             $("#groupVersion > .btn").removeClass("disabled");
+           }
+
+           $("#editionTitle").html(version+" "+edition);
+           var url = "/Documentation/Sugar_Versions/"+version+"/"+Utils.getAbbreviatedEdition(edition)+"/";
+           loadEditionVersion(url);
+        });
+
+      });
+
+    });
 
     return div;
   });
 }
 
-var createButtons = function(data){
-  var div = document.createElement('div');
-  $.each(data, function( index, value ) {
-    // alert( index + ": " +  );
-    $(div).append('<button type="button" class="btn btn-default active">'+value+'</button>');
-  });
-  
 
-}
 var versions = $('<section class="active-filters"><div><label>Edition:</label></div></section>');
 $(".content-body").html("");
 $(".content-body").append(versions);
