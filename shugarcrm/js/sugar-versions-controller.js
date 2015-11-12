@@ -100,8 +100,15 @@ var addVersions = function(parent){
         return;
       version = $(this).html();
       $("#editionTitle").html(version+" "+edition);
+        getEditions(parent, version);
+    });
 
-      $.getJSON( "http://scarlett.sugarcrm.com/public/index.php/api/v1/editions/"+version, function( data ) {
+    return div;
+  });
+}
+
+var getEditions = function(parent, version){
+   $.getJSON( "http://scarlett.sugarcrm.com/public/index.php/api/v1/editions/"+version, function( data ) {
         var items = [];
         $.each( data, function( key, val ) {
           items.push( '<button type="button" class="btn btn-default">' + val + "</button>" );
@@ -131,18 +138,13 @@ var addVersions = function(parent){
         });
 
       });
-
-    });
-
-    return div;
-  });
 }
 
 
 var versions = $('<section class="active-filters"><div><label>Edition:</label></div></section><div class="content-children"></div>');
 $(".content-body").html("");
 $(".content-body").append(versions);
-addVersions(versions);
+addVersions($(".active-filters > div"));
 
 
 // var editionVersions = '<section class="active-filters">'+
