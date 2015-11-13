@@ -135,7 +135,7 @@ $(document).ready(function() {
   if (path == "Documentation" || path.indexOf("file:") > -1) {
     // $(".content-heading").append(editionVersions());
     var url = "/Documentation/Sugar_Versions/" + version + "/" + Utils.getAbbreviatedEdition(edition) + "/";
-    var versions = $('<section class="active-filters"><div><span class="m-r-xs">Version:</span></div><h1 class="m-t-md" id="editionTitle"></h1></section><div class="content-section"></div>');
+    var versions = $('<section class="active-filters"><div><span class="m-r-xs">Version:</span></div><h1 class="m-t-md red" id="editionTitle"></h1></section><div class="content-section"></div>');
     $(".content-body").html("");
     $(".content-body").append(versions);
     addVersions($(".active-filters > div"));
