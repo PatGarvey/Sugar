@@ -1073,6 +1073,10 @@ a.video-thumbnail:hover {
   padding: 15px;
 }
 
+.faded{
+  opacity: 0.77;
+}
+
 .m-xxs {
   margin: 2px 4px;
 }
