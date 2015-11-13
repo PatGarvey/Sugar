@@ -265,7 +265,10 @@ var Tree = (function () {
         }
     };
     Tree.prototype.addMainContent = function(data, path){
-        var pathArr = path.substr(1).split("/");
+        var pathArr = path.split("/");
+
+        if(path.substr(0,1) != "/")
+            path = "/"+path;
         //TODO Sugar_Versions/x.x H2 only
         // if(pathArr[1] == "Documentation" && 
         //     ((pathArr[2] == "Sugar_Versions" && pathArr.length < 4)  || pathArr[2] == "Installable_Connectors" )){
@@ -277,10 +280,11 @@ var Tree = (function () {
 
         var mainContent;
         //Is Guide
-        if(data.guide == 1)
+        if(data.guide == 1){
             mainContent = data.children;
+            this.addToc(data, path, this.getHeaderTags());
             //this.getHeaderTags();
-        else{
+        }else{
             this.getLowestLevelLinks();
             this.addToc(data, path, mainContent);
         }
@@ -505,7 +509,7 @@ var Tree = (function () {
          if(window.location.href.indexOf("http")>-1)
              searchPath = "/"+path;
          else
-             searchPath = "/Documentation/Sugar_Versions/7.6/Ent/Application_Guide/User_Interface";
+             path = searchPath = "/Documentation/Sugar_Versions/7.6/Ent/Application_Guide/User_Interface";
 
          var treeData = tree;
 
@@ -548,7 +552,7 @@ var Tree = (function () {
             widgets.insertBefore(navTitle, widgets.firstChild);    
 
              // if(branch )
-             NavTree.addMainContent(branch, "/"+path);
+             NavTree.addMainContent(branch, path);
              // NavTree.addToc(branch, "/"+path, NavTree.getHeaderTags());
              // NavTree.setTreeTitle(branch.name);
              NavTree.setData(branch);
