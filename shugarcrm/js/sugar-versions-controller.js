@@ -1,6 +1,6 @@
 var path = window.location.href.replace(/^https?:\/\/[^\/]+\//i, "").replace(/\/$/, "");
-var edition = "Ultimate";
-var version = "7.6";
+var edition = "";
+var version = "";
 
 //Button Bar CLICK - ALL
 $(".btn-group > .btn").click(function() {
@@ -74,6 +74,7 @@ var addVersions = function(parent) {
         return;
       $(this).addClass("active").siblings().removeClass("active");
       version = $(this).html();
+      edition = "";
       $("#editionTitle").html(version + " " + edition);
       getEditions(parent, version);
     });
@@ -133,7 +134,7 @@ $(document).ready(function() {
   if (path == "Documentation" || path.indexOf("file:") > -1) {
     // $(".content-heading").append(editionVersions());
     var url = "/Documentation/Sugar_Versions/" + version + "/" + Utils.getAbbreviatedEdition(edition) + "/";
-    var versions = $('<section class="active-filters"><div><span class="m-r-xs">Version:</span></div></section><div class="content-section"></div>');
+    var versions = $('<section class="active-filters"><div><span class="m-r-xs">Version:</span></div><h1 class="m-t-md" id="editionTitle"></h1></section><div class="content-section"></div>');
     $(".content-body").html("");
     $(".content-body").append(versions);
     addVersions($(".active-filters > div"));
