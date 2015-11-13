@@ -17,7 +17,7 @@ $(".btn-group > .btn").click(function() {
 function loadEditionVersion(version, edition) {
 
   // $(".content-section").html("");
-  $(".content-section").addClass('faded');
+  // $(".content-section").addClass('faded');
 
   $.getJSON("http://scarlett.sugarcrm.com/public/index.php/api/v1/documentation?version=" + version + "&edition=" + Utils.getAbbreviatedEdition(edition), function(data) {
     var cols = [];
@@ -39,7 +39,7 @@ function loadEditionVersion(version, edition) {
     });
 
     $(".content-section").html("");
-    $(".content-section").removeClass('faded');
+    // $(".content-section").removeClass('faded');
     var div = $("<div />", {
       "class": "row",
       "id": "columns",
