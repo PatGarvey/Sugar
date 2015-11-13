@@ -3,25 +3,6 @@ var path = window.location.href.replace(/^https?:\/\/[^\/]+\//i, "").replace(/\/
 var edition = "Ultimate";
 var version = "7.6";
 
-
-$(document).ready(function () {
-  // body...
-
-
-  if( path == "Documentation"){
-    // $(".content-heading").append(editionVersions());
-    var url = "/Documentation/Sugar_Versions/"+version+"/"+Utils.getAbbreviatedEdition(edition)+"/";
-	// loadEditionVersion(url);
-
-  }
-  if(path.split("/").length == 4)
-    Utils.transformTableToDivs();   
-});
-
-
-
-
-
 //Button Bar CLICK - ALL
 $(".btn-group > .btn").click(function(){
 	if($(this).hasClass("disabled"))
@@ -56,7 +37,10 @@ $(".content-children").html("");
         "class":"plain-list",
         html : items.join("")
       });
-      cols.push( '<div class="col-sm-6 col-md-3 content-col"><h2>'+key+'</h2>'+ul.html()+'</div>' );
+
+      var holder = $('<div>').append(ul);
+
+      cols.push( '<div class="col-sm-6 col-md-3 content-col"><h2>'+key+'</h2>'+holder.html()+'</div>' );
     });
 
     var div = $( "<div />", {
@@ -140,10 +124,25 @@ var getEditions = function(parent, version){
 }
 
 
-var versions = $('<section class="active-filters"><div><label>Edition:</label></div></section><div class="content-children"></div>');
-$(".content-body").html("");
-$(".content-body").append(versions);
-addVersions($(".active-filters > div"));
+
+$(document).ready(function () {
+
+  if( path == "Documentation"){
+    // $(".content-heading").append(editionVersions());
+    var url = "/Documentation/Sugar_Versions/"+version+"/"+Utils.getAbbreviatedEdition(edition)+"/";
+    var versions = $('<section class="active-filters"><div><label>Edition:</label></div></section><div class="content-children"></div>');
+    $(".content-body").html("");
+    $(".content-body").append(versions);
+    addVersions($(".active-filters > div"));
+
+  }
+  if(path.split("/").length == 4)
+    Utils.transformTableToDivs();   
+});
+
+
+
+
 
 
 // var editionVersions = '<section class="active-filters">'+
