@@ -544,6 +544,8 @@ var Tree = (function () {
             widgets.insertBefore(nav, widgets.firstChild);
 
             $('section.content').addClass("has-navmenu");
+            var foot = $('footer > div');
+            $('footer > div').addClass("has-navmenu");
 
             //Add page title widget
             var navTitle = document.createElement('div');
