@@ -28,6 +28,8 @@ function loadEditionVersion(version, edition){
     $.each( data, function( key, val ) {
       var items = [];
       $.each(val, function( key, val){
+        if(val.lastIndexOf("/") == val.length - 1)
+          val = val.substring(0, val.length - 1);
         items.push("<li><a href="+val+">"+key+"</a></li>");
       });
       var ul = $("<ul />", {
