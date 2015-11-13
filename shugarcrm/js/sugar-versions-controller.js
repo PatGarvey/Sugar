@@ -60,9 +60,8 @@ $(".content-children").html("");
     });
 
     var div = $( "<div />", {
-      "class": "btn-group btn-group-sm",
-      "role":"groupVersion",
-      "id":"groupVersion",
+      "class": "row",
+      "id":"columns",
       html: cols.join( "" )
     }).appendTo($(".content-children"));
     // <div class="col-sm-6 col-md-3 content-col">
