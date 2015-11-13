@@ -13,9 +13,6 @@ $(".btn-group > .btn").click(function(){
     //Only for demo
     $("#sugar-on-ultimate .row").toggleClass("hidden");
 
-    //AJAX call to get site
-    var url = "/Documentation/Sugar_Versions/"+version+"/"+Utils.getAbbreviatedEdition(edition)+"/";
-    loadEditionVersion(url);
   });
 
 function loadEditionVersion(version, edition){
@@ -23,10 +20,10 @@ function loadEditionVersion(version, edition){
   		// Utils.transformTableToDivs();
     // });
 
-$(".content-children").html("");
+  $(".content-children").html("");
 
 
-  $.getJSON("http://scarlett.sugarcrm.com/public/index.php/api/v1/documentation?version="+version+"&edition="+edition, function(data){
+  $.getJSON("http://scarlett.sugarcrm.com/public/index.php/api/v1/documentation?version="+version+"&edition="+Utils.getAbbreviatedEdition(edition), function(data){
     var cols = [];
     $.each( data, function( key, val ) {
       var items = [];
@@ -81,6 +78,7 @@ var addVersions = function(parent){
     $("#groupVersion > .btn").click(function(){
       if($(this).hasClass("disabled"))
         return;
+      $(this).addClass("active").siblings().removeClass("active");
       version = $(this).html();
       $("#editionTitle").html(version+" "+edition);
         getEditions(parent, version);
@@ -106,6 +104,7 @@ var getEditions = function(parent, version){
 
         //Edition Button Bar CLICK
         $("#groupEdition > .btn").click(function(){
+          $(this).addClass("active").siblings().removeClass("active");
           edition = $(this).html();
           if(edition == "Community Edition"){
            version = "6.5";
