@@ -79,6 +79,11 @@ var addVersions = function(parent) {
       getEditions(parent, version);
     });
 
+    //Auto Select first
+    if(version == ""){
+      $("#groupVersion > .btn:nth-child(1)").click();
+    }
+
     return div;
   });
 }
@@ -111,18 +116,14 @@ var getEditions = function(parent, version) {
     $("#groupEdition > .btn").click(function() {
       $(this).addClass("active").siblings().removeClass("active");
       edition = $(this).html();
-      if (edition == "Community Edition") {
-        version = "6.5";
-        $("#groupVersion > .btn").removeClass("active");
-        $("#groupVersion button:nth-child(4)").addClass("active").siblings().addClass("disabled");
-      } else {
-        $("#groupVersion > .btn").removeClass("disabled");
-      }
-
       $("#editionTitle").html(version + " " + edition);
-      var url = "/Documentation/Sugar_Versions/" + version + "/" + Utils.getAbbreviatedEdition(edition) + "/";
       loadEditionVersion(version, edition);
     });
+
+    //Auto Select first
+    if(edition == ""){
+      $("#groupEdition > .btn:nth-child(1)").click();
+    }
 
   });
 }

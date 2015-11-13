@@ -407,7 +407,7 @@ table td{
   margin: 0 0 5px;
 }
 
-.active-filters label, .active-filters span {
+.active-filters label {
   font-weight: 300;
   margin: 0 5px 5px 0;
 }
@@ -436,7 +436,7 @@ table td{
     display: inline-block;
   }
 
-  .active-filters label, .active-filters span {
+  .active-filters label {
     margin: 0 5px 0 0;
   }
 }
