@@ -282,7 +282,8 @@ var Tree = (function () {
         //Is Guide
         if(data.guide == 1){
             mainContent = data.children;
-            this.addToc(data, path, this.getHeaderTags());
+            if(data.href != path)
+                this.addToc(data, path, this.getHeaderTags());
             //this.getHeaderTags();
         }else{
             this.getLowestLevelLinks();
@@ -509,7 +510,7 @@ var Tree = (function () {
          if(window.location.href.indexOf("http")>-1)
              searchPath = "/"+path;
          else
-             path = searchPath = "/Documentation/Sugar_Versions/7.6/Ent/Application_Guide/User_Interface";
+             path = searchPath = "/Documentation/Sugar_Versions/7.6/Pro/Application_Guide/Getting_Started";
 
          var treeData = tree;
 
