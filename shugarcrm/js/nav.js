@@ -430,8 +430,8 @@ var Tree = (function () {
             if(index > 0)
                 var prev = branchParent.children[index - 1];
             if(index < branchParent.children.length - 1)
-                var next = branchParent.children[branchParent.children.length - 1];
-            var pHTML = '', nHTML = '';
+                var next = branchParent.children[index + 1];
+            var pHTML = '<div class="col-xs-6 text-left"></div>', nHTML = '';
             var maxlen = 40;
             var showPaging = false;
 
@@ -489,7 +489,7 @@ var Tree = (function () {
          if(window.location.href.indexOf("http")>-1)
              searchPath = "/"+path;
          else
-             path = searchPath = "/Documentation/Sugar_Versions/7.6/Corp/Administration_Guide/Admin_Wizard";
+             url = path = searchPath = "/Documentation/Sugar_Versions/7.6/Corp/Administration_Guide/Admin_Wizard";
 
          var treeData = tree;
 
