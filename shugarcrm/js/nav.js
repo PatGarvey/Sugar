@@ -416,16 +416,21 @@ var Tree = (function () {
         return tags;
     };
 
-     Tree.prototype.addPrevNextPageLinks = function(){
+     Tree.prototype.addPrevNextPageLinks = function(branch){
         var widgets_bottom = $(".content-footer");
         if (widgets_bottom && this.siblings) {
             // html container
             var prevnext = document.createElement('div');
             prevnext.setAttribute('id', 'prevnext');
             prevnext.setAttribute('class', 'row');
-            // Set vars
-            var prev = NavTree.siblingPrev;
-            var next = NavTree.siblingNext;
+
+            var searchPathParent = branch.path.substring(0, searchPath.lastIndexOf("/"));
+            var branchParent = NavTree.findKey({ "href" : searchPathParent }, treeData);
+            var index = branchParent.children.indexOf(branch);
+            if(index > 0)
+                var prev = branchParent.children[index - 1];
+            if(index < branchParent.children.length - 1)
+                var next = branchParent.children[branchParent.children.length - 1];
             var pHTML = '', nHTML = '';
             var maxlen = 40;
             var showPaging = false;
@@ -468,32 +473,6 @@ var Tree = (function () {
             return path;
         return path2;
 
-        // if(pathArr[0] == "Get_Started"){
-
-        // }else if(pathArr[0] == "Documentation"){
-        //     if(pathArr[1] == "Sugar_Versions"){
-        //         if(pathArr.length >= 5){
-        //             path2 = this.getPathUntilDepth(pathArr, 5);
-        //         }
-        //     }else if(pathArr[1] == "Mobile_Solutions"){
-        //         if(pathArr.length > 3){
-        //             path2 = this.getPathUntilDepth(pathArr, 3);
-        //         }
-        //     }else if(pathArr[1] == "Plug-ins"){
-        //         if(pathArr.length > 3){
-        //             path2 = this.getPathUntilDepth(pathArr, 3);
-        //         }
-        //     }else if(pathArr[1] == "Sugar_Developer"){
-        //         if(pathArr.length > 3){
-        //             path2 = this.getPathUntilDepth(pathArr, 3);
-        //         }
-        //     }
-        // }else if(pathArr[0] == "Knowledge_Base"){
-        //     if(pathArr.length > 2){
-        //         path2 = this.getPathUntilDepth(pathArr, 2);
-        //     }
-        // }
-        // return path2;
      };
 
      Tree.prototype.create = function(tree) {
@@ -510,7 +489,7 @@ var Tree = (function () {
          if(window.location.href.indexOf("http")>-1)
              searchPath = "/"+path;
          else
-             path = searchPath = "/Documentation/Sugar_Versions/7.6/Pro/Application_Guide/Getting_Started";
+             path = searchPath = "/Documentation/Sugar_Versions/7.6/Corp/Administration_Guide/Admin_Wizard";
 
          var treeData = tree;
 
@@ -571,8 +550,9 @@ var Tree = (function () {
                      $('#tree-title').append(siblingList);
 
                      //Add prev & next paging links
-                     if(branch.paging == 1)
-                         NavTree.addPrevNextPageLinks();
+                     var localBranch = NavTree.findKey({ "href" : path }, treeData);
+                     if(localBranch.paging == 1)
+                         NavTree.addPrevNextPageLinks(localBranch);
                  }
              }
              if($('#tree-title').html() == ""){
