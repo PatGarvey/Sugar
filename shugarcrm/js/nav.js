@@ -550,7 +550,7 @@ var Tree = (function () {
                      $('#tree-title').append(siblingList);
 
                      //Add prev & next paging links
-                     var localBranch = NavTree.findKey({ "href" : path }, treeData);
+                     var localBranch = NavTree.findKey({ "href" : url }, treeData);
                      if(localBranch.paging == 1)
                          NavTree.addPrevNextPageLinks(localBranch);
                  }
