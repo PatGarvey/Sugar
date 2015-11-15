@@ -424,8 +424,8 @@ var Tree = (function () {
             prevnext.setAttribute('id', 'prevnext');
             prevnext.setAttribute('class', 'row');
 
-            var searchPathParent = branch.path.substring(0, searchPath.lastIndexOf("/"));
-            var branchParent = NavTree.findKey({ "href" : searchPathParent }, treeData);
+            var searchPathParent = branch.href.substring(0, branch.href.lastIndexOf("/"));
+            var branchParent = NavTree.findKey({ "href" : searchPathParent }, this.sitemapjs);
             var index = branchParent.children.indexOf(branch);
             if(index > 0)
                 var prev = branchParent.children[index - 1];
