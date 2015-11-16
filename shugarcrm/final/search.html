@@ -1,8 +1,7 @@
 {{template:8f8e9ac5-5d83-9bbe-9d95-563a466f5333}}
 <!-- Header.html -->
-
 <section class="active-filters">
-  <div class="container">
+  <!-- <div class="container">
     <form class="form-inline">
       <label>Active filters:</label>
       <select name="filter_tag1" class="form-control input-sm">
@@ -27,48 +26,43 @@
       </select>
       <a href="#" class="clear-all-filters">CLEAR ALL</a>
     </form>
-  </div>
+  </div> -->
 </section>
-
 <section class="content">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-9">
-        <div class="search-result-box" id="search-box">
-          <div class="results"></div>
-          <div class="pagination"></div>
-        </div>
+  <div class="row">
+    <div class="col-md-9">
+      <div class="search-result-box" id="search-box">
+        <div class="results"></div>
+        <div class="pagination"></div>
       </div>
     </div>
   </div>
 </section>
-
 <script type="text/html" id="search_results">
-  <% if (data.error) { %>
-    <p><%=data.error%></p>
-  <% } else { %>
-    <h1>Displaying <%=params.count%> results for "<%=Utils.stripTags(params.query)%>"</h1>
-    <div class="tabs">
-      <ul class="nav nav-tabs">
-        <li role="presentation" class="active"><a href="#">All results</a></li>        
-      </ul>
-    </div>
-    <ul class="search-result-list">
-      <%
-        for (var i = 0; i < data.data.length; i++) {
-        var item = data.data[i];
-      %>
-        <li>
-          <a href="<%=item.url%>">
-            <span class="title"><%=item.title%></span>
-            <span class="url"><%=item.url%></span>
-            <p class="summary"><%=Utils.strCut(item.summary, 150)%></p>
-          </a>
-        </li>
-      <% } %>
-    </ul>
+<% if (data.error) { %>
+<p><%=data.error%></p>
+<% } else { %>
+<h1>Displaying <%=params.count%> results for "<%=Utils.stripTags(params.query)%>"</h1>
+<div class="tabs">
+  <ul class="nav nav-tabs">
+    <li role="presentation" class="active"><a href="#">All results</a></li>
+  </ul>
+</div>
+<ul class="search-result-list">
+  <%
+  for (var i = 0; i < data.data.length; i++) {
+  var item = data.data[i];
+  %>
+  <li>
+    <a href="<%=item.url%>">
+      <span class="title"><%=item.title%></span>
+      <span class="url"><%=item.url%></span>
+      <p class="summary"><%=Utils.strCut(item.summary, 150)%></p>
+    </a>
+  </li>
   <% } %>
+</ul>
+<% } %>
 </script>
-
 <!-- Footer.html -->
 {{template:80b69e0c-b60c-a34b-11fb-563a464a9923}}

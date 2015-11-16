@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <title>SugarCRM Support - SugarCRM Support Site</title>
-
     <link href="http://fonts.googleapis.com/css?family=Titillium+Web:700" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="assets/bootstrap-3.3.5/css/bootstrap.css">
     <link rel="stylesheet" href="assets/jasny-bootstrap/css/jasny-bootstrap.css">
@@ -13,16 +12,15 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/forms.css">
   </head>
-
   <body>
     <header class="project-header navbar navbar-inverse">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="#" title="SugarCRM Support - SugarCRM Support Site">
             <img src="images/logo.png">
@@ -36,7 +34,6 @@
         </div>
       </div>
     </header>
-
     <section class="filters">
       <div class="container">
         <form class="row" id="searchForm" action="search_results.html">
@@ -44,7 +41,6 @@
             <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
             <input name="q" type="text" class="form-control input-lg" placeholder="Search documentation, video, training...">
           </div>
-
           <div class="col-xs-12 col-sm-9 col-md-6 form-set">
             <div class="row">
               <div class="col-xs-4 input-wrap">
@@ -75,26 +71,22 @@
               </div>
             </div>
           </div>
-
           <div class="col-xs-12 col-sm-3 col-md-1 input-wrap no-border">
             <button type="submit" class="btn btn-search btn-lg btn-block">Search</button>
           </div>
         </form>
       </div>
     </section>
-
     <section class="sub-navigation">
       <div class="container">
-
         <div class="toogle-wrap visible-xs">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sub-nav" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
           </button>
         </div>
-
         <ul id="sub-nav" class="nav navbar-nav navbar-collapse collapse">
           <li><a href="#">KNOWLEDGE BASE</a></li>
           <li><a href="#">GETTING STARTED</a></li>
@@ -102,14 +94,11 @@
           <li><a href="#">TRAINING</a></li>
           <li><a href="#">COMMUNITY</a></li>
         </ul>
-
         <a href="#" class="btn btn-default btn-default-transparent create-ticket">CREATE TICKET</a>
-
       </div>
     </section>
-
     <section class="active-filters">
-      <div class="container">
+      <!-- <div class="container">
         <form class="form-inline">
           <label>Active filters:</label>
           <select name="filter_tag1" class="form-control input-sm">
@@ -134,9 +123,8 @@
           </select>
           <a href="#" class="clear-all-filters">CLEAR ALL</a>
         </form>
-      </div>
+      </div> -->
     </section>
-
     <section class="content">
       <div class="container">
         <div class="row">
@@ -149,38 +137,36 @@
         </div>
       </div>
     </section>
-
     <script type="text/html" id="search_results">
-      <% if (data.error) { %>
-        <p><%=data.error%></p>
-      <% } else { %>
-        <h1>Displaying <%=params.count%> results for "<%=Utils.stripTags(params.query)%>"</h1>
-        <div class="tabs">
-          <ul class="nav nav-tabs">
-            <li role="presentation" class="active"><a href="#">All results</a></li>
-            <li role="presentation"><a href="#">Base</a></li>
-            <li role="presentation"><a href="#">Community</a></li>
-            <li role="presentation"><a href="#">Documentation</a></li>
-            <li role="presentation"><a href="#">Apps</a></li>
-          </ul>
-        </div>
-        <ul class="search-result-list">
-          <%
-            for (var i = 0; i < data.data.length; i++) {
-            var item = data.data[i];
-          %>
-            <li>
-              <a href="<%=item.url%>">
-                <span class="title"><%=item.title%></span>
-                <span class="url"><%=item.url%></span>
-                <p class="summary"><%=Utils.strCut(item.summary, 150)%></p>
-              </a>
-            </li>
-          <% } %>
-        </ul>
+    <% if (data.error) { %>
+    <p><%=data.error%></p>
+    <% } else { %>
+    <h1>Displaying <%=params.count%> results for "<%=Utils.stripTags(params.query)%>"</h1>
+    <div class="tabs">
+      <ul class="nav nav-tabs">
+        <li role="presentation" class="active"><a href="#">All results</a></li>
+        <li role="presentation"><a href="#">Base</a></li>
+        <li role="presentation"><a href="#">Community</a></li>
+        <li role="presentation"><a href="#">Documentation</a></li>
+        <li role="presentation"><a href="#">Apps</a></li>
+      </ul>
+    </div>
+    <ul class="search-result-list">
+      <%
+      for (var i = 0; i < data.data.length; i++) {
+      var item = data.data[i];
+      %>
+      <li>
+        <a href="<%=item.url%>">
+          <span class="title"><%=item.title%></span>
+          <span class="url"><%=item.url%></span>
+          <p class="summary"><%=Utils.strCut(item.summary, 150)%></p>
+        </a>
+      </li>
       <% } %>
+    </ul>
+    <% } %>
     </script>
-
     <footer>
       <div class="container">
         <div class="row">
@@ -273,9 +259,7 @@
         </div>
       </div>
     </footer>
-
     <a href="#" class="scroll-to-top"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span> Back to top</a>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="assets/bootstrap-3.3.5/js/bootstrap.min.js"></script>
     <script src="assets/jasny-bootstrap/js/jasny-bootstrap.js"></script>
