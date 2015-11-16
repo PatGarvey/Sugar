@@ -40,6 +40,13 @@ var Search = (function() {
 
     this.$resultsBlock.removeClass('loading');
 
+    //Add amazon style selected category
+    var pills = $("<div class='pills'></div>");
+    $.forEach(this.tags, function(element, index){
+      pills.append('<span>'+element+'<span>')
+    });
+    $("#search-box h1").after(pills);
+
     //Add Pagination control at bottom
     if (this.data.data.length > 9) {
       var search = window.location.search;
