@@ -29,6 +29,8 @@ var Search = (function() {
       throw new Error('JS template engine doesn\'t found');
     }
 
+    var instance = this;
+
     this.$results.html(tmpl('search_results', {
       data: this.data,
       params: {
@@ -41,11 +43,20 @@ var Search = (function() {
     this.$resultsBlock.removeClass('loading');
 
     //Add amazon style selected category
-    var pills = $("<div class='pills'></div>");
-    $.forEach(this.tags, function(element, index){
-      pills.append('<span>'+element+'<span>')
+    var pills = $("<div class='pull-right'></div>");
+    $.each(this.tags, function(index, element) {
+      pills.append('<div class="tag label btn-default sm"><span>' + element + '</span><a style="opacity: 1;" id="removeTag_' + index + '""><i class="glyphicon glyphicon-remove-sign"></i></a></div>')
     });
-    $("#search-box h1").after(pills);
+    $("#search-box h1").append(pills);
+
+    //Remove a TAG
+    $("#search-box .tag a").click(function() {
+      var index = this.id.split("_")[1];
+
+      var tag = $(this).prev();
+      instance.removeTag(tag[0].innerHTML);     
+
+    });
 
     //Add Pagination control at bottom
     if (this.data.data.length > 9) {
@@ -60,6 +71,17 @@ var Search = (function() {
 
   };
 
+  //Removes a query Tag from the Search Query URL and does a new search
+  Search.prototype.removeTag = function(tag){
+    var search = window.location.search;
+    var criteria = window.location.search.substr(1).split('&');
+
+    if(search.indexOf(tag) > -1){
+      search = search.substring(0, search.indexOf(tag)-6) + search.substring(search.indexOf(tag)+tag.length);
+    }
+    window.location.search = search;
+  };
+
   /**
    * Convert search criteria from URL to API query
    */
@@ -72,7 +94,7 @@ var Search = (function() {
       if (criteria[i].indexOf('tag') > -1) {
         if (criteria[i].indexOf('All+edition') == -1) {
           var tag = criteria[i].substr(5);
-          if(tag != "")
+          if (tag != "")
             tags.push(tag);
         }
       } else if (criteria[i].indexOf('from') > -1) {

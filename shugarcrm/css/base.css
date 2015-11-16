@@ -1544,7 +1544,7 @@ footer .nav-social a {
 }
 
 .search-result-box h1 {
-  font-style: italic;
+  /*font-style: italic;*/
   font-size: 18px;
   margin-bottom: 15px;
 }
@@ -1575,6 +1575,15 @@ footer .nav-social a {
 
 .search-result-box.loading .results {
   opacity: 0.2;
+}
+
+.search-result-box .label{
+  color: #444;
+  /*float:right;*/
+}
+
+.search-result-box .tag a{
+  margin-left: 5px;
 }
 
 .search-result-list {
