@@ -21,6 +21,7 @@ function loadEditionVersion(version, edition) {
 
   $.getJSON("http://scarlett.sugarcrm.com/public/index.php/api/v1/documentation?version=" + version + "&edition=" + Utils.getAbbreviatedEdition(edition), function(data) {
     var cols = [];
+    var index = 0;
     $.each(data, function(key, val) {
       var items = [];
       $.each(val, function(key, val) {
@@ -34,8 +35,15 @@ function loadEditionVersion(version, edition) {
       });
 
       var holder = $('<div>').append(ul);
-
-      cols.push('<div class="col-sm-6 col-md-3 content-col"><h2>' + key + '</h2>' + holder.html() + '</div>');
+      switch(key){
+        case 'User Guides'           : index = 0; break;
+        case 'Administrator Guides'  : index = 1; break;
+        case 'Developer Guides'      : index = 2; break;
+        case 'Release Notes'         : index = 3; break;
+        case 'Other'                 : index = 4; break;
+      }
+      // cols.push('<div class="col-sm-6 col-md-3 content-col"><h2>' + key + '</h2>' + holder.html() + '</div>');
+      cols[index]= '<div class="col-sm-6 col-md-3 content-col"><h2>' + key + '</h2>' + holder.html() + '</div>';
     });
 
     $(".content-section").html("");
@@ -82,7 +90,7 @@ var addVersions = function(parent) {
     });
 
     //Auto Select first
-    if(version == ""){
+    if (version == "") {
       $("#groupVersion > .btn:nth-child(1)").click();
     }
 
@@ -107,7 +115,7 @@ var getEditions = function(parent, version) {
         "id": "groupEdition",
         html: items.join("")
       }).appendTo(parent);
-    }else{
+    } else {
       //replace buttons
       $("#groupEdition > button").remove();
       $("#groupEdition").append(items.join(""));
@@ -123,7 +131,7 @@ var getEditions = function(parent, version) {
     });
 
     //Auto Select first
-    if(edition == ""){
+    if (edition == "") {
       $("#groupEdition > .btn:nth-child(1)").click();
     }
 
