@@ -33,6 +33,7 @@ var Search = (function() {
       data: this.data,
       params: {
         query: this.query,
+        criteria: this.criteria,
         count: this.data.data.length || 0
       }
     }));
@@ -74,6 +75,7 @@ var Search = (function() {
     // Store criteria
     this.criteria = criteria;
 
+    this.tags = tags;
     // Store query
     this.query = query;
 
