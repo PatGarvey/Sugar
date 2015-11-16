@@ -41,14 +41,14 @@ var Search = (function() {
     this.$resultsBlock.removeClass('loading');
 
     //Add Pagination control at bottom
-    if(this.data.data.length > 9){
+    if (this.data.data.length > 9) {
       var search = window.location.search;
-      if(search.indexOf("from") > -1){
+      if (search.indexOf("from") > -1) {
         search = search.substring(0, search.indexOf("&from"));
       }
-      search += "&from="+(this.from + 10);
-      
-      this.$pagination.html("<a href='"+search+"'>Next page >></a>");
+      search += "&from=" + (this.from + 10);
+
+      this.$pagination.html("<a href='" + search + "'>Next page >></a>");
     }
 
   };
@@ -58,13 +58,16 @@ var Search = (function() {
    */
   Search.prototype.searchCriteriaToQuery = function() {
     var query,
-        tags = [],
-        criteria = window.location.search.substr(1).split('&');
+      tags = [],
+      criteria = window.location.search.substr(1).split('&');
 
     for (var i = 0; i < criteria.length; i++) {
       if (criteria[i].indexOf('tag') > -1) {
-        if(criteria[i].indexOf('All+edition') == -1)
-          tags.push(criteria[i].substr(5));
+        if (criteria[i].indexOf('All+edition') == -1) {
+          var tag = criteria[i].substr(5);
+          if(tag != "")
+            tags.push(tag);
+        }
       } else if (criteria[i].indexOf('from') > -1) {
         this.from = Math.floor(criteria[i].substr(5));
       } else {
