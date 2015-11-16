@@ -12,7 +12,7 @@ $(document).ready(function () {
 	$("section.filters form").attr("action", "/search/");
 
 	//Select ULTIMATE RIGHT AWAY - HEADER
-	$("#searchForm select[name='tag1']").selectpicker('val', 'Ultimate');
+	// $("#searchForm select[name='tag1']").selectpicker('val', 'Ultimate');
 
 	var url = window.location.href.replace("http://", "").replace("https://", "");
 	var path = window.location.href.replace(/^https?:\/\/[^\/]+\//i, "").replace(/\/$/, "");
