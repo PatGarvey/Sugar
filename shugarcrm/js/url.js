@@ -18,7 +18,7 @@ $(document).ready(function () {
 	var path = window.location.href.replace(/^https?:\/\/[^\/]+\//i, "").replace(/\/$/, "");
 
 	//Remove BreadCrumbs from level 1 pages
-	if(path.split("/").length == 1)
+	if(path.split("/").length == 1 || path.indexOf("search") == 0)
 		$("section.content-heading").html("");
 
 	//Documentation PAGES
