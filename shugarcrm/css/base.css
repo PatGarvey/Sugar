@@ -885,11 +885,11 @@ footer .has-navmenu{
 .nav li a{
   padding: 0;
 }
-.nav li a:hover{
+/*.nav li a:hover{
   background: none;
   text-decoration: underline;
 }
-
+*/
 #tree-navigation{
   padding: 20px 10px 20px 30px;
 }
