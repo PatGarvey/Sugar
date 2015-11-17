@@ -151,8 +151,10 @@ $(document).ready(function() {
     addVersions($(".active-filters > div"));
 
   }
-  if (path.split("/").length == 4)
-    Utils.transformTableToDivs();
+
+  
+  // if (path.split("/").length == 4)
+    // Utils.transformTableToDivs();
 });
 
 
