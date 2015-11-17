@@ -490,7 +490,7 @@ var Tree = (function () {
          if(window.location.href.indexOf("http")>-1)
              searchPath = "/"+path;
          else
-             url = path = searchPath = "/Documentation/Sugar_Versions/7.6/Pro/Installation_and_Upgrade_Guide";
+             url = path = searchPath = "/Documentation";
 
          var treeData = tree;
 
@@ -506,6 +506,7 @@ var Tree = (function () {
 
             //Don't render tree if configured by disable_nav = 1
             if(branch.disable_nav == 1 || this.tree != null){
+                $(".content-navbar-toogle").hide();
                 return;
             }
             var widgets = document.getElementById('navmenu');
