@@ -282,7 +282,7 @@ var Tree = (function () {
         //Is Guide
         if(data.guide == 1){
             mainContent = data.children;
-            if(data.href != path)
+            if(data.href != path || mainContent.length == 0)
                 this.addToc(data, path, this.getHeaderTags());
             //this.getHeaderTags();
         }else{
@@ -489,7 +489,7 @@ var Tree = (function () {
          if(window.location.href.indexOf("http")>-1)
              searchPath = "/"+path;
          else
-             url = path = searchPath = "/Documentation/Sugar_Versions/7.6/Corp/Administration_Guide/Admin_Wizard";
+             url = path = searchPath = "/Documentation/Sugar_Versions/7.6/Pro/Installation_and_Upgrade_Guide";
 
          var treeData = tree;
 
