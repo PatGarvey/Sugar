@@ -303,7 +303,8 @@ var Tree = (function () {
             
         // }
 
-        
+       
+
      }; 
      Tree.prototype.addToc = function(data, path, tocChildren){
         if (data["href"] == path){
@@ -559,6 +560,13 @@ var Tree = (function () {
                  $('#tree-title').addClass("hidden");
              }
              // $('#tree-title').append(siblingList);
+
+             //iOs hack to fix double-tap
+             $('#tree-navigation a').on('click touchend', function(e) {
+                  var el = $(this);
+                  var link = el.attr('href');
+                  window.location = link;
+             });
 
              $('body').scrollspy({ target: '#toc-body' });
              $('[data-spy="scroll"]').each(function () {
