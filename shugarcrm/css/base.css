@@ -817,8 +817,8 @@ a.video-thumbnail:hover {
 @media(max-width: 768px){
   .content.has-navmenu {
     position: relative;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
@@ -827,6 +827,14 @@ footer .has-navmenu{
   position: relative;
   padding-left: 283px;
   padding-right: 30px;
+}
+
+@media(max-width: 768px){
+  footer .has-navmenu{
+    position: relative;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
 }
 
 .content .navmenu {
