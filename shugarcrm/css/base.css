@@ -111,6 +111,11 @@ table td{
 .filters {
   padding: 30px 0 25px;
 }
+@media (max-width: 768px) {
+  .filters {
+    padding: 15px 0;
+  }  
+}
 
 .filters .row,
 .filters .form-set {
