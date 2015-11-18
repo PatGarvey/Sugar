@@ -107,14 +107,15 @@ var getEditions = function(parent, version) {
 
     var div = $("#groupEdition");
     if (div.length == 0) {
-      var label = $("<span class='m-l-sm m-r-xs'>Edition:</span>").appendTo(parent);
+      var div = $("<div class='col-xs-12 col-md-6'></div>").appendTo(parent.parent());
+      var label = $("<span class='m-r-xs'>Edition:</span>").appendTo(div);
 
       div = $("<div />", {
         "class": "btn-group btn-group-sm",
         "role": "groupEdition",
         "id": "groupEdition",
         html: items.join("")
-      }).appendTo(parent);
+      }).appendTo(div);
     } else {
       //replace buttons
       $("#groupEdition > button").remove();
@@ -145,14 +146,14 @@ $(document).ready(function() {
   if (path == "Documentation" || path.indexOf("file:") > -1) {
     // $(".content-heading").append(editionVersions());
     var url = "/Documentation/Sugar_Versions/" + version + "/" + Utils.getAbbreviatedEdition(edition) + "/";
-    var versions = $('<section class="active-filters"><div><span class="m-r-xs">Version:</span></div><h1 class="m-t-md red" id="editionTitle"></h1></section><div class="content-section"></div>');
+    var versions = $('<section class="active-filters"><div class="row"><div class="col-xs-12 col-md-3 m-b-sm"><span class="m-r-xs">Version:</span></div></div><h1 class="m-t-md red" id="editionTitle"></h1></section><div class="content-section"></div>');
     $(".content-body").html("");
     $(".content-body").append(versions);
-    addVersions($(".active-filters > div"));
+    addVersions($(".active-filters > div > div"));
 
   }
 
-  
+
   // if (path.split("/").length == 4)
     // Utils.transformTableToDivs();
 });
