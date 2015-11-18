@@ -70,6 +70,7 @@ table td{
   padding: 5px;
 }
 
+
 /**
  * Header
  */
@@ -523,6 +524,12 @@ a.scroll-to-top {
 
 a.scroll-to-top.visible {
   opacity: 1;
+}
+
+.content-body img{
+  max-width: 100%;
+  height: auto;
+  width: auto\9;
 }
 
 /*Striped LIST*/
