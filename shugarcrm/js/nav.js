@@ -490,7 +490,7 @@ var Tree = (function () {
          if(window.location.href.indexOf("http")>-1)
              searchPath = "/"+path;
          else
-             url = path = searchPath = "/Documentation";
+             url = path = searchPath = "/Documentation/Sugar_Versions/7.6/Pro/Application_Guide";
 
          var treeData = tree;
 
