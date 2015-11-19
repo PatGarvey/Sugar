@@ -42,7 +42,7 @@
 <% if (data.error) { %>
 <p><%=data.error%></p>
 <% } else { %>
-<h1>Displaying <%=params.count%> results for "<%=Utils.stripTags(params.query)%>"</h1>
+<h1>Displaying <%=params.count%> of <%=params.total%> results for "<%=Utils.stripTags(params.query)%>"</h1>
 <div class="tabs">
   <ul class="nav nav-tabs">
     <li role="presentation" class="active"><a href="#">All results</a></li>

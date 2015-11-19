@@ -36,7 +36,8 @@ var Search = (function() {
       params: {
         query: this.query,
         criteria: this.criteria,
-        count: this.data.data.length || 0
+        count: this.data.data.length || 0,
+        total: this.data.total
       }
     }));
 
