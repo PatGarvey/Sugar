@@ -46,6 +46,7 @@ var Search = (function() {
     //Add amazon style selected category
     var pills = $("<div class='pull-right'></div>");
     $.each(this.tags, function(index, element) {
+      element = element.split("+").join(" ");
       pills.append('<div class="tag label btn-default sm"><span>' + element + '</span><a style="opacity: 1;" id="removeTag_' + index + '""><i class="glyphicon glyphicon-remove-sign"></i></a></div>')
     });
     $("#search-box h1").append(pills);
