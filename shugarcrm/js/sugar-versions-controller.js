@@ -35,15 +35,25 @@ function loadEditionVersion(version, edition) {
       });
 
       var holder = $('<div>').append(ul);
-      switch(key){
-        case 'User Guides'           : index = 0; break;
-        case 'Administrator Guides'  : index = 1; break;
-        case 'Developer Guides'      : index = 2; break;
-        case 'Release Notes'         : index = 3; break;
-        case 'Other'                 : index = 4; break;
+      switch (key) {
+        case 'User Guides':
+          index = 0;
+          break;
+        case 'Administrator Guides':
+          index = 1;
+          break;
+        case 'Developer Guides':
+          index = 2;
+          break;
+        case 'Release Notes':
+          index = 3;
+          break;
+        case 'Other':
+          index = 4;
+          break;
       }
       // cols.push('<div class="col-sm-6 col-md-3 content-col"><h2>' + key + '</h2>' + holder.html() + '</div>');
-      cols[index]= '<div class="col-sm-6 col-md-3 content-col"><h2>' + key + '</h2>' + holder.html() + '</div>';
+      cols[index] = '<div class="col-sm-6 col-md-3 content-col"><h2>' + key + '</h2>' + holder.html() + '</div>';
     });
 
     $(".content-section").html("");
@@ -84,26 +94,29 @@ var addVersions = function(parent) {
         return;
       $(this).addClass("active").siblings().removeClass("active");
       version = $(this).html();
-      edition = "";
+      if (window.localStorage && window.localStorage.getItem("edition"))
+        edition = window.localStorage.getItem("edition");
+      else
+        edition = "";
       $("#editionTitle").html(version + " " + edition);
       getEditions(parent, version);
     });
 
 
-    if(window.localStorage){
-        version = window.localStorage.getItem("version");      
-        edition = window.localStorage.getItem("edition");      
+    if (window.localStorage) {
+      version = window.localStorage.getItem("version");
+      edition = window.localStorage.getItem("edition");
     }
 
     //Auto Select first
     if (version == "") {
       $("#groupVersion > .btn:nth-child(1)").click();
-    }else{
-       $("#groupVersion > .btn").each(function () {
-          if(version.toLowerCase() == this.innerHTML.toLowerCase()){
-            this.click();
-          }
-        });
+    } else {
+      $("#groupVersion > .btn").each(function() {
+        if (version.toLowerCase() == this.innerHTML.toLowerCase()) {
+          this.click();
+        }
+      });
     }
 
     return div;
@@ -146,12 +159,12 @@ var getEditions = function(parent, version) {
     //Auto Select first
     if (edition == "") {
       $("#groupEdition > .btn:nth-child(1)").click();
-    }else{
-       $("#groupEdition > .btn").each(function () {
-          if(edition.toLowerCase() == this.innerHTML.toLowerCase()){
-            this.click();
-          }
-       });
+    } else {
+      $("#groupEdition > .btn").each(function() {
+        if (edition.toLowerCase() == this.innerHTML.toLowerCase()) {
+          this.click();
+        }
+      });
     }
   });
 }
@@ -172,7 +185,7 @@ $(document).ready(function() {
 
 
   // if (path.split("/").length == 4)
-    // Utils.transformTableToDivs();
+  // Utils.transformTableToDivs();
 });
 
 
