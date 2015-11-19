@@ -93,7 +93,10 @@ if (typeof jQuery === 'undefined') { throw new Error('Jasny Bootstrap\'s JavaScr
     }
     
     if (this.options.autohide)
-      $(document).on('click', $.proxy(this.autohide, this))
+      // $(document).on('click', $.proxy(this.autohide, this))
+      $(document).on('click touchstart', $.proxy(this.autohide, this))
+
+
 
     if (this.options.toggle) this.toggle()
     
