@@ -49,7 +49,11 @@ $(document).ready(function () {
 	      		if(window.localStorage){
 	      		    edition = window.localStorage.getItem("edition");
 	      		    //TODO
-	      		    $("#groupEdition > .btn:nth-child(2)").click();
+	      		    $("#groupEdition > .btn").each(function () {
+	      		    	if(edition.toLowerCase() == this.innerHTML.toLowerCase()){
+	      		    		this.click();
+	      		    	}
+	      		    });
 	      		}else{
 		      		$("#groupEdition > .btn:nth-child(1)").click();
 		      	}
