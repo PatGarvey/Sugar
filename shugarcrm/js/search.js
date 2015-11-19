@@ -113,6 +113,14 @@ var Search = (function() {
     // Store query
     this.query = query;
 
+    //Save to Local Storage
+    if(window.localStorage){
+      if(criteria[1].length > 6)
+        window.localStorage.setItem("edition",criteria[1].substr(2));
+      if(criteria[2].length > 6)
+        window.localStorage.setItem("version",criteria[2].substr(2));
+    }
+
     // Generate query string
     this.queryString = 'q=' + (query ? query + (tags.length ? ' AND ' : '') : '') + (tags.length ? 'tags:' + tags.join(',') : '');
   };

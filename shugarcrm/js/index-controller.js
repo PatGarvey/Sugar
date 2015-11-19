@@ -45,7 +45,14 @@ $(document).ready(function () {
 	      	$("#groupEdition > .btn").removeClass("active");
 
 	      	if(firstRun){
-	      		$("#groupEdition > .btn:nth-child(1)").click();
+
+	      		if(window.localStorage){
+	      		    edition = window.localStorage.getItem("edition");
+	      		    //TODO
+	      		    $("#groupEdition > .btn:nth-child(2)").click();
+	      		}else{
+		      		$("#groupEdition > .btn:nth-child(1)").click();
+		      	}
 	      		firstRun = false;
 	      	}
 	      }
