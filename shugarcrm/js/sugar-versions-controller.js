@@ -107,7 +107,7 @@ var getEditions = function(parent, version) {
 
     var div = $("#groupEdition");
     if (div.length == 0) {
-      var div = $("<div class='col-xs-12 col-md-6'></div>").appendTo(parent.parent());
+      var div = $("<div class='col-xs-12 col-md-8'></div>").appendTo(parent.parent());
       var label = $("<span class='m-r-xs'>Edition:</span>").appendTo(div);
 
       div = $("<div />", {
