@@ -490,7 +490,7 @@ var Tree = (function () {
          if(window.location.href.indexOf("http")>-1)
              searchPath = "/"+path;
          else
-             url = path = searchPath = "/Documentation/Sugar_Versions/7.6/Pro/Application_Guide";
+             url = path = searchPath = "/Documentation/Sugar_Versions/7.6/Pro/Application_Guide/Getting_Started";
 
          var treeData = tree;
 
@@ -566,7 +566,10 @@ var Tree = (function () {
              $('#tree-navigation a').on('click touchend', function(e) {
                   var el = $(this);
                   var link = el.attr('href');
-                  window.location = link;
+                  if ($(window).width() < 768){
+                      $("#navmenu").offcanvas('hide');
+                      window.location = link;
+                  }
              });
 
              $('body').scrollspy({ target: '#toc-body' });
