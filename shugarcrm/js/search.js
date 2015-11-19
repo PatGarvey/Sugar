@@ -116,9 +116,9 @@ var Search = (function() {
     //Save to Local Storage
     if(window.localStorage){
       if(criteria[1].length > 6)
-        window.localStorage.setItem("edition",criteria[1].substr(2));
+        window.localStorage.setItem("edition",criteria[1].substr(5));
       if(criteria[2].length > 6)
-        window.localStorage.setItem("version",criteria[2].substr(2));
+        window.localStorage.setItem("version",criteria[2].substr(5));
     }
 
     // Generate query string
