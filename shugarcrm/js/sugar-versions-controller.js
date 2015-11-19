@@ -1,6 +1,8 @@
 var path = window.location.href.replace(/^https?:\/\/[^\/]+\//i, "").replace(/\/$/, "");
 var edition = "";
+var defalutEdition = "Professional";
 var version = "";
+
 
 //Button Bar CLICK - ALL
 $(".btn-group > .btn").click(function() {
@@ -94,8 +96,11 @@ var addVersions = function(parent) {
         return;
       $(this).addClass("active").siblings().removeClass("active");
       version = $(this).html();
-      if (window.localStorage && window.localStorage.getItem("edition"))
-        edition = window.localStorage.getItem("edition");
+      if (window.localStorage)
+        if(window.localStorage.getItem("edition"))
+          edition = window.localStorage.getItem("edition");
+        else
+          edition = defalutEdition;
       else
         edition = "";
       $("#editionTitle").html(version + " " + edition);
