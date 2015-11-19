@@ -89,9 +89,21 @@ var addVersions = function(parent) {
       getEditions(parent, version);
     });
 
+
+    if(window.localStorage){
+        version = window.localStorage.getItem("version");      
+        edition = window.localStorage.getItem("edition");      
+    }
+
     //Auto Select first
     if (version == "") {
       $("#groupVersion > .btn:nth-child(1)").click();
+    }else{
+       $("#groupVersion > .btn").each(function () {
+          if(version.toLowerCase() == this.innerHTML.toLowerCase()){
+            this.click();
+          }
+        });
     }
 
     return div;
@@ -134,8 +146,13 @@ var getEditions = function(parent, version) {
     //Auto Select first
     if (edition == "") {
       $("#groupEdition > .btn:nth-child(1)").click();
+    }else{
+       $("#groupEdition > .btn").each(function () {
+          if(edition.toLowerCase() == this.innerHTML.toLowerCase()){
+            this.click();
+          }
+       });
     }
-
   });
 }
 

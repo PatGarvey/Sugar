@@ -48,7 +48,6 @@ $(document).ready(function () {
 
 	      		if(window.localStorage){
 	      		    edition = window.localStorage.getItem("edition");
-	      		    //TODO
 	      		    $("#groupEdition > .btn").each(function () {
 	      		    	if(edition.toLowerCase() == this.innerHTML.toLowerCase()){
 	      		    		this.click();
