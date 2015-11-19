@@ -22,11 +22,13 @@ $(document).ready(function() {
 		if (window.localStorage) {
 			//Select Local Storage user type
 			usertype = window.localStorage.getItem("usertype");
-			$("#groupUserType > .btn").each(function() {
-				if (usertype.toLowerCase() == this.innerHTML.toLowerCase()) {
-					this.click();
-				}
-			});
+			if (usertype != null) {
+				$("#groupUserType > .btn").each(function() {
+					if (usertype.toLowerCase() == this.innerHTML.toLowerCase()) {
+						this.click();
+					}
+				});
+			}
 		} else {
 			//Auto select End Users
 			$("#groupUserType > .btn:nth-child(1)").click();
