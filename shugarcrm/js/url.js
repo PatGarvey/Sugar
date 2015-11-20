@@ -27,6 +27,9 @@ $(document).ready(function () {
 		loadScript(BASE_URL+"js/sugar-versions-controller.js");
 	}else if(path.indexOf("Get_Started") > -1){
 		//INDEX PAGE - load external script
+		loadScript(BASE_URL+"js/get_started-controller.js");
+	}else if(path.split("/").length == 0){
+		//INDEX PAGE - load external script
 		loadScript(BASE_URL+"js/index-controller.js");
 	}
 });
