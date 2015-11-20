@@ -124,7 +124,7 @@ var Search = (function() {
     }
 
     // Generate query string
-    this.queryString = 'q=' + (query ? query + (tags.length ? ' AND ' : '') : '') + (tags.length ? 'tags:' + tags.join(',') : '');
+    this.queryString = 'q=' + (query ? query + (tags.length ? ' AND ' : '') : '') + (tags.length ? 'tags:' + tags.join(' AND tags:') : '');
   };
 
   /**
