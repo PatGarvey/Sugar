@@ -57,20 +57,20 @@ $(document).ready(function() {
 			$('#editionHolder').removeClass("hidden");
 			$("#groupEdition > .btn").removeClass("active");
 
-			if (firstRun) {
+			// if (firstRun) {
 
-				if (window.localStorage) {
-					edition = window.localStorage.getItem("edition");
-					$("#groupEdition > .btn").each(function() {
-						if (edition.toLowerCase() == this.innerHTML.toLowerCase()) {
-							this.click();
-						}
-					});
-				} else {
-					$("#groupEdition > .btn:nth-child(1)").click();
-				}
-				firstRun = false;
+			if (window.localStorage) {
+				edition = window.localStorage.getItem("edition");
+				$("#groupEdition > .btn").each(function() {
+					if (edition.toLowerCase() == this.innerHTML.toLowerCase()) {
+						this.click();
+					}
+				});
+			} else {
+				$("#groupEdition > .btn:nth-child(1)").click();
 			}
+			firstRun = false;
+			// }
 		}
 	});
 
