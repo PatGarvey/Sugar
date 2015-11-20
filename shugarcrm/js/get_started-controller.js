@@ -11,7 +11,8 @@ $(document).ready(function() {
 	//Load SITEMAP.JS
 	$.ajax({
 		// url: '/assets/js/scripts/sitemap.js',
-		url: 'http://support.sugarcrm.com/assets/js/scripts/sitemap.js',
+		// url: 'http://support.sugarcrm.com/assets/js/scripts/sitemap.js',
+		url: 'http://support-sugarcrm-com.s3-website-us-west-2.amazonaws.com/assets/js/scripts/sitemap.js',
 		dataType: "jsonp",
 		jsonp: false,
 		jsonpCallback: 'sitemap'
