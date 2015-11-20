@@ -497,10 +497,10 @@ var Tree = (function() {
 
         NavTree.sitemapjs = tree;
 
-        var branch;
+        
         var originalBranch = NavTree.findKey({ "href": searchPath }, treeData);
         searchPath = NavTree.getJunctionForPath(searchPath, treeData);
-        var parentGuideBranch = NavTree.findKey({ "href": searchPath }, treeData);
+        var branch = NavTree.findKey({ "href": searchPath }, treeData);
         // if(parentGuideBranch.disable_nav == 0){
         // }
 
