@@ -18,10 +18,7 @@ $(".btn-group > .btn").click(function() {
 
 function loadEditionVersion(version, edition) {
 
-  // $(".content-section").html("");
-  // $(".content-section").addClass('faded');
-
-  $.getJSON(" http://scarlett.sugarcrm.com/sugar/rest/v10/documentation/" + version + "/" + Utils.getAbbreviatedEdition(edition), function(data) {
+  $.getJSON("http://scarlett.sugarcrm.com/sugar/rest/v10/documentation/" + version + "/" + Utils.getAbbreviatedEdition(edition), function(data) {
     var cols = [];
     var index = 0;
     $.each(data, function(key, val) {
