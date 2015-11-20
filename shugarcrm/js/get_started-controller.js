@@ -19,7 +19,7 @@ $(document).ready(function() {
 		// var branch = Utils.findKey({href:"/Get_Started/End_Users/Community_Edition"}, data);
 		sitemap = tree;
 
-		if (window.localStorage) {
+		if (window.localStorage && window.localStorage.getItem("usertype")) {
 			//Select Local Storage user type
 			usertype = window.localStorage.getItem("usertype");
 			if (usertype != null) {
