@@ -497,10 +497,12 @@ var Tree = (function() {
 
         NavTree.sitemapjs = tree;
 
+        var branch;
+        var originalBranch = NavTree.findKey({ "href": searchPath }, treeData);
         searchPath = NavTree.getJunctionForPath(searchPath, treeData);
-        var branch = NavTree.findKey({
-            "href": searchPath
-        }, treeData);
+        var parentGuideBranch = NavTree.findKey({ "href": searchPath }, treeData);
+        // if(parentGuideBranch.disable_nav == 0){
+        // }
 
         //Get top-level sibling nodes
         var searchPathParent = searchPath.substring(0, searchPath.lastIndexOf("/"));
@@ -508,7 +510,7 @@ var Tree = (function() {
         if (branch) {
 
             //Don't render tree if configured by disable_nav = 1
-            if (branch.disable_nav == 1 || this.tree != null) {
+            if (originalBranch.disable_nav == 1 || this.tree != null) {
                 $(".content-navbar-toogle").hide();
                 return;
             }
