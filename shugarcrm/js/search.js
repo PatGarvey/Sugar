@@ -31,12 +31,26 @@ var Search = (function() {
 
     var instance = this;
 
+    var count  = this.data.data.length;
+    //Add Pagination control at bottom
+    if (this.data.data.length > 9) {
+      var search = window.location.search;
+      if (search.indexOf("from") > -1) {
+        search = search.substring(0, search.indexOf("&from"));
+      }
+      search += "&from=" + (this.from + 10);
+
+      this.$pagination.html("<a href='" + search + "'>Next page >></a>");
+
+      count = (this.from +1)+ " - "+(this.from+10);
+    }
+
     this.$results.html(tmpl('search_results', {
       data: this.data,
       params: {
         query: this.query,
         criteria: this.criteria,
-        count: this.data.data.length || 0,
+        count: count || 0,
         total: this.data.total
       }
     }));
@@ -60,16 +74,7 @@ var Search = (function() {
 
     });
 
-    //Add Pagination control at bottom
-    if (this.data.data.length > 9) {
-      var search = window.location.search;
-      if (search.indexOf("from") > -1) {
-        search = search.substring(0, search.indexOf("&from"));
-      }
-      search += "&from=" + (this.from + 10);
-
-      this.$pagination.html("<a href='" + search + "'>Next page >></a>");
-    }
+    
 
   };
 
