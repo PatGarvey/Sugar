@@ -6,22 +6,21 @@
 
   this.tmpl = function tmpl(str, data) {
     var fn = !/\W/.test(str) ?
-    cache[str] = cache[str] ||
+      cache[str] = cache[str] ||
       tmpl(document.getElementById(str).innerHTML) :
-    new Function("obj",
-      "var p=[],print=function(){p.push.apply(p,arguments);};" +
-      "with(obj){p.push('" +
-      str
+      new Function("obj",
+        "var p=[],print=function(){p.push.apply(p,arguments);};" +
+        "with(obj){p.push('" +
+        str
         .replace(/[\r\t\n]/g, " ")
         .split("<%").join("\t")
         .replace(/((^|%>)[^\t]*)'/g, "$1\r")
         .replace(/\t=(.*?)%>/g, "',$1,'")
         .split("\t").join("');")
         .split("%>").join("p.push('")
-        .split("\r").join("\\'")
-      + "');}return p.join('');");
+        .split("\r").join("\\'") + "');}return p.join('');");
 
-    return data ? fn( data ) : fn;
+    return data ? fn(data) : fn;
   };
 })();
 
@@ -45,46 +44,51 @@
       return string;
     },
     //Used to find a key in the SiteMap.js
-    findKey: function(keyObj, data){
-        var p, key, val, tRet;
-        for (p in keyObj) {
-            if (keyObj.hasOwnProperty(p)) {
-                key = p;
-                val = keyObj[p];
-            }
+    findKey: function(keyObj, data) {
+      var p, key, val, tRet;
+      for (p in keyObj) {
+        if (keyObj.hasOwnProperty(p)) {
+          key = p;
+          val = keyObj[p];
         }
+      }
 
-        if (data[key] == val) {
-            return data;
-        } else if (Array.isArray(data)){
-            var children = data;
-            for (var i = 0; i < children.length; i++) {
-                var found = this.findKey(keyObj, children[i]);
-                if (found) {
-                    return found;
-                }
-            }
-        } else if (data.hasOwnProperty("children")) {
-            var children = data.children;
-            for (var i = 0; i < children.length; i++) {
-                var found = this.findKey(keyObj, children[i]);
-                if (found) {
-                    return found;
-                }
-            }
+      if (data[key] == val) {
+        return data;
+      } else if (Array.isArray(data)) {
+        var children = data;
+        for (var i = 0; i < children.length; i++) {
+          var found = this.findKey(keyObj, children[i]);
+          if (found) {
+            return found;
+          }
         }
+      } else if (data.hasOwnProperty("children")) {
+        var children = data.children;
+        for (var i = 0; i < children.length; i++) {
+          var found = this.findKey(keyObj, children[i]);
+          if (found) {
+            return found;
+          }
+        }
+      }
     },
     stripTags: function(str) {
       var replace = new RegExp("\\+", 'gi');
 
       return str.replace(replace, ' ');
-    }, 
+    },
     getAbbreviatedEdition: function(edition) {
       var ed = "";
-      switch(edition){
-        case "Corporate": ed = "Corp"; break;
-        case "Community Edition" : ed = "CE"; break;
-        default : ed = edition.substring(0,3);
+      switch (edition) {
+        case "Corporate":
+          ed = "Corp";
+          break;
+        case "Community Edition":
+          ed = "CE";
+          break;
+        default:
+          ed = edition.substring(0, 3);
       }
       return ed;
     },
@@ -93,11 +97,11 @@
       return string.split(" ").join("_");
     },
 
-    transformTableToDivs: function(){
+    transformTableToDivs: function() {
       var div = document.createElement('div');
       div.setAttribute("class", "row");
       $("section .content-body").append(div);
-      $(".container table td").each(function(){
+      $(".container table td").each(function() {
         var divs = document.createElement('div');
         divs.setAttribute("class", "col-sm-6 col-md-3 content-col");
         var h2 = document.createElement('h2');
@@ -105,17 +109,22 @@
         divs.appendChild(h2);
 
         var ul = document.createElement('ul');
-        ul.setAttribute('class','plain-list');
+        ul.setAttribute('class', 'plain-list');
         divs.appendChild(ul);
-        $("li", this).each(function(){
+        $("li", this).each(function() {
           var li = document.createElement('li');
           li.innerHTML = $(this).html();
           ul.appendChild(li);
         });
         div.appendChild(divs);
-      }); 
+      });
       $(".container table td").remove();
+    },
+
+    isMobile: function() {
+      return $(window).width() < 768;
     }
+
   };
 })();
 
@@ -137,7 +146,9 @@ $(function() {
 
   // Video modal trigger
   if ($.fn.videoModalTrigger) {
-    $('.video-trigger').videoModalTrigger({ autoplay: true });
+    $('.video-trigger').videoModalTrigger({
+      autoplay: true
+    });
   }
 
   //Select sub-nav active
@@ -159,8 +170,8 @@ $(function() {
 
     return this.each(function() {
       var $link = $(this),
-          $videoModal = $($link.data('target')),
-          $videoFrame = $videoModal.find('iframe');
+        $videoModal = $($link.data('target')),
+        $videoFrame = $videoModal.find('iframe');
 
       $link.click(function() {
         $videoFrame.attr('src', $link.data('video') + (options.autoplay ? '?autoplay=1' : ''));
@@ -182,12 +193,13 @@ $(function() {
   $.fn.pageScroller = function(opt) {
     var options = $.extend({
       speed: 300,
-      activeClass: 'visible'
+      activeClass: 'visible',
+      showNav: false
     }, opt);
 
     function Scroller(btn, options) {
       var _this = this,
-          $btn = $(btn);
+        $btn = $(btn);
 
       this.scrollTop = function() {
         $('body, html').animate({
@@ -202,9 +214,20 @@ $(function() {
       $btn.click(function(e) {
         e.preventDefault();
 
-        _this.scrollTop();
+        if (options.showNav)
+          $("#navmenu").offcanvas('toggle');
+        else
+          _this.scrollTop();
       });
+
+
     };
+
+    if (Utils.isMobile()) {
+      var t = $(this);
+      $(this).html("Contents");
+      options.showNav = true;
+    }
 
     return this.each(function() {
       new Scroller(this, options);
@@ -221,17 +244,15 @@ $(function() {
   $.fn.selectSubNav = function() {
 
     var url = window.location.href;
-    if(url.indexOf("Knowledge_Base") > -1){
+    if (url.indexOf("Knowledge_Base") > -1) {
       $("#sub-nav li:nth-child(2)").toggleClass("active");
-    }else if(url.indexOf("Get_Started") > -1){
+    } else if (url.indexOf("Get_Started") > -1) {
       $("#sub-nav li:nth-child(1)").toggleClass("active");
-    }else if(url.indexOf("Documentation") > -1){
+    } else if (url.indexOf("Documentation") > -1) {
       $("#sub-nav li:nth-child(3)").toggleClass("active");
-    }else if(url.indexOf("Resources") > -1){
+    } else if (url.indexOf("Resources") > -1) {
       $("#sub-nav li:nth-child(4)").toggleClass("active");
     }
 
   };
 })(jQuery);
-
-
