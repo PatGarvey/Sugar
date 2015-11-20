@@ -21,15 +21,14 @@ $(document).ready(function () {
 	if(path.split("/").length == 1 || path.indexOf("search") == 0)
 		$("section.content-heading").html("");
 
-	//Documentation PAGES
 	if(path.indexOf("Documentation") > -1){
-		//SUGAR VERSIONS controller 
+		//Documentation PAGES
 		loadScript(BASE_URL+"js/sugar-versions-controller.js");
 	}else if(path.indexOf("Get_Started") > -1){
-		//INDEX PAGE - load external script
+		//GETTING STARTED
 		loadScript(BASE_URL+"js/get_started-controller.js");
-	}else if(path.split("/").length == 0){
-		//INDEX PAGE - load external script
+	}else if(path.indexOf("/") == -1){
+		//INDEX PAGE 
 		loadScript(BASE_URL+"js/index-controller.js");
 	}
 });
