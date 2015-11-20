@@ -21,7 +21,7 @@ function loadEditionVersion(version, edition) {
   // $(".content-section").html("");
   // $(".content-section").addClass('faded');
 
-  $.getJSON("http://scarlett.sugarcrm.com/public/index.php/api/v1/documentation?version=" + version + "&edition=" + Utils.getAbbreviatedEdition(edition), function(data) {
+  $.getJSON(" http://scarlett.sugarcrm.com/sugar/rest/v10/documentation/" + version + "/" + Utils.getAbbreviatedEdition(edition), function(data) {
     var cols = [];
     var index = 0;
     $.each(data, function(key, val) {
@@ -77,7 +77,7 @@ function loadEditionVersion(version, edition) {
 
 //Load Editions & Versions from API
 var addVersions = function(parent) {
-  $.getJSON("http://scarlett.sugarcrm.com/public/index.php/api/v1/versions", function(data) {
+  $.getJSON("http://scarlett.sugarcrm.com/sugar/rest/v10/versions/supported", function(data) {
     var items = [];
     $.each(data, function(key, val) {
       items.push('<button type="button" class="btn btn-default">' + val + "</button>");
@@ -129,7 +129,7 @@ var addVersions = function(parent) {
 }
 
 var getEditions = function(parent, version) {
-  $.getJSON("http://scarlett.sugarcrm.com/public/index.php/api/v1/editions/" + version, function(data) {
+  $.getJSON("http://scarlett.sugarcrm.com/sugar/rest/v10/versions/" + version + "/editions", function(data) {
     var items = [];
     $.each(data, function(key, val) {
       items.push('<button type="button" class="btn btn-default">' + val + "</button>");
