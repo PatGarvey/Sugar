@@ -347,6 +347,7 @@ table td{
   .sub-navigation .create-ticket {
     padding: 5px 10px;
     top: 10px;
+    display: none;
   }
 }
 
@@ -360,6 +361,7 @@ table td{
     right: 15px;
     top: 18px;
     padding: 8px 20px;
+    display: block;
   }
 }
 
