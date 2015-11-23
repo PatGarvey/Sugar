@@ -85,6 +85,7 @@
           ed = "Corp";
           break;
         case "Community Edition":
+        case "Community":
           ed = "CE";
           break;
         default:
