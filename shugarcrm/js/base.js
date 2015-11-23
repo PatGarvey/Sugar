@@ -123,7 +123,9 @@
     },
 
     isMobile: function() {
-      return $(window).width() < 768;
+      // return $(window).width() < 768;
+      var isTouchDevice = 'ontouchstart' in document.documentElement;
+      return isTouchDevice;
     }
 
   };

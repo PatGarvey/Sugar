@@ -576,7 +576,8 @@ var Tree = (function() {
                 var el = $(this);
                 var link = el.attr('href');
                 if (Utils.isMobile()) {
-                    $("#navmenu").offcanvas('hide');
+                    if($(".content-navbar-toogle").visible())
+                        $("#navmenu").offcanvas('hide');
                     window.location = link;
                 }
             });
