@@ -5,7 +5,7 @@ $(document).ready(function() {
 	//Get Last Modified pages
 	$.getJSON('http://scarlett.sugarcrm.com/public/api/v1/search?q=*&sort=modified:desc&size=10', function(json, textStatus) {
 		//TODO add #id
-		var list = $("section.content-section > div.row > div:nth-child(3)");
+		var list = $("section.content-section > div.row > div:nth-child(1)");
 		list.html("");
 		list.append("<h2>Latest News & Updates</h2>");
 		for (var i = 0; i < 4; i++) {
