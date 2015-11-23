@@ -30,7 +30,7 @@ $(document).ready(function () {
 	}else if(path.indexOf("Resources") == 0){
 		//RESOURCES
 		$(".content-navbar-toogle").hide();
-	}else if(path.indexOf("Search") > -1){
+	}else if(path.indexOf("search") > -1){
 		//SEARCH
 		$(".content-navbar-toogle").hide();
 	}else if(path.indexOf("/") == -1){
