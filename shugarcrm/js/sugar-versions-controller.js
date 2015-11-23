@@ -100,7 +100,7 @@ var addVersions = function(parent) {
           edition = defalutEdition;
       else
         edition = "";
-      $("#editionTitle").html(version + " " + edition);
+      $("#editionTitle").html(version + " " + edition + " Documentation");
       getEditions(parent, version);
     });
 
@@ -154,7 +154,7 @@ var getEditions = function(parent, version) {
     $("#groupEdition > .btn").click(function() {
       $(this).addClass("active").siblings().removeClass("active");
       edition = $(this).html();
-      $("#editionTitle").html(version + " " + edition);
+      $("#editionTitle").html(version + " " + edition + " Documentation");
       loadEditionVersion(version, edition);
     });
 
