@@ -983,7 +983,7 @@ footer .has-navmenu{
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 769px) {
     .content .navmenu {
       width: 240px;
     }
