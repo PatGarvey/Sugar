@@ -27,9 +27,16 @@ $(document).ready(function () {
 	}else if(path.indexOf("Get_Started") > -1){
 		//GETTING STARTED
 		loadScript(BASE_URL+"js/get_started-controller.js");
+	}else if(path.indexOf("Resources") == 0){
+		//RESOURCES
+		$(".content-navbar-toogle").hide();
+	}else if(path.indexOf("Search") > -1){
+		//SEARCH
+		$(".content-navbar-toogle").hide();
 	}else if(path.indexOf("/") == -1){
 		//INDEX PAGE 
 		loadScript(BASE_URL+"js/index-controller.js");
+		$(".content-navbar-toogle").hide();
 	}
 });
 
