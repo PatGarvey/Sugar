@@ -147,6 +147,8 @@ $(document).ready(function() {
 
 			var videoholder = $("section.video-content .row");
 
+			videoholder.html("");
+
 			$.each(json, function (key, value) {
 				var videoDiv = $('<div class="col-xs-6 col-md-3 video-item">'+
 					'<a href="#" class="thumbnail video-thumbnail video-trigger " data-video="'+value.url+'" data-toggle="modal" data-target="#videoPlayerModal"><img src="http://scarlett.sugarcrm.com/Sugar/shugarcrm/pictures/video.jpg"></a>'+
