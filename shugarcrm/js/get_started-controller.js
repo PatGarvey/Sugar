@@ -128,12 +128,19 @@ $(document).ready(function() {
 	function getVideo(usertype){
 		$.getJSON('http://scarlett.sugarcrm.com/sugar/rest/v10/documentation/videos/Get_Started/'+usertype, function(json, textStatus) {
 			var holder = $("section.video-content");
+
+			holder.append('<ul class="accordion">'+
+            '<li class="panel"><h2><a data-toggle="collapse" data-parent=".accordion" href="#learn-the-basis">Learn the Basics (Videos)</a></h2>'+
+              '<div class="row collapse in" id="learn-the-basis"></div></li></ul>');
+
+			var videoholder = $("section.video-content .row");
+
 			$.each(json, function (key, value) {
 				var videoDiv = $('<div class="col-sm-6 col-md-3 video-item">'+
 					'<a href="#" class="thumbnail video-thumbnail video-trigger " data-video="'+value.link+'" data-toggle="modal" data-target="#videoPlayerModal"><img src="http://scarlett.sugarcrm.com/Sugar/shugarcrm/pictures/video.jpg"></a>'+
 	                  '<a href="#" class="video-trigger" data-toggle="modal" data-video="'+value.link+'" data-target="#videoPlayerModal">'+value.name+'</a>'+
 	                '</div>');
-				holder.append(videoDiv);
+				videoholder.append(videoDiv);
 			});
 
 		});
