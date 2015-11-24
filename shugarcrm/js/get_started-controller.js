@@ -159,6 +159,10 @@ $(document).ready(function() {
 				videoholder.append(videoDiv);
 			});
 
+			$('.video-trigger').videoModalTrigger({
+		      autoplay: true
+		    });
+
 		});
 	}
 
