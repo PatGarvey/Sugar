@@ -131,12 +131,24 @@ $(document).ready(function() {
 
 			holder.append('<ul class="accordion">'+
             '<li class="panel"><h2><a data-toggle="collapse" data-parent=".accordion" href="#learn-the-basis">Learn the Basics (Videos)</a></h2>'+
-              '<div class="row collapse in" id="learn-the-basis"></div></li></ul>');
+              '<div class="row collapse in" id="learn-the-basis"></div></li></ul>'+
+'<div class="modal fade" id="videoPlayerModal" tabindex="-1" role="dialog" aria-labelledby="videoPlayerModal" aria-hidden="true">'+
+      '<div class="modal-dialog">'+
+        '<div class="modal-content">'+
+          '<div class="modal-body">'+
+            '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>'+
+            '<div>'+
+              '<iframe width="100%" height="350" src=""></iframe>'+
+            '</div>'+
+          '</div>'+
+        '</div>'+
+      '</div>'+
+    '</div>');
 
 			var videoholder = $("section.video-content .row");
 
 			$.each(json, function (key, value) {
-				var videoDiv = $('<div class="col-sm-6 col-md-3 video-item">'+
+				var videoDiv = $('<div class="col-xs-6 col-md-3 video-item">'+
 					'<a href="#" class="thumbnail video-thumbnail video-trigger " data-video="'+value.link+'" data-toggle="modal" data-target="#videoPlayerModal"><img src="http://scarlett.sugarcrm.com/Sugar/shugarcrm/pictures/video.jpg"></a>'+
 	                  '<a href="#" class="video-trigger" data-toggle="modal" data-video="'+value.link+'" data-target="#videoPlayerModal">'+value.name+'</a>'+
 	                '</div>');
