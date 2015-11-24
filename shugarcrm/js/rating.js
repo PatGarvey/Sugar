@@ -91,7 +91,7 @@
       // TODO: remove this in real project
       console.log(data);
       window.setTimeout(function() {
-        _this.controls.$raitingResult.html('<p class="text-success">Thank You for Your voting!</p>');
+        _this.controls.$raitingResult.html('<p class="text-success"></p>');
         _this.controls.$raitingVotes.width(_this.getVotesWidth(vote));
         _this.controls.$ratingBlock.removeClass('can-vote').unbind();
         _this.canVote = false;
@@ -104,7 +104,7 @@
         data: $.param(data),
       })
       .done(function(res) {
-        _this.controls.$raitingResult.html('<p class="text-success">Thank You for Your voting!</p>');
+        _this.controls.$raitingResult.html('<p class="text-success"></p>');
         _this.controls.$raitingVotes.width(this.getVotesWidth(vote));
         _this.controls.$ratingBlock.removeClass('can-vote').unbind();
         _this.canVote = false;
