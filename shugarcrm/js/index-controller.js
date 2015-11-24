@@ -7,7 +7,7 @@ $(document).ready(function() {
 		//TODO add #id
 		var list = $("section.content-section > div.row > div:nth-child(1)");
 		list.html("");
-		list.append("<h2>Latest News & Updates</h2>");
+		list.append("<h2>Latest News</h2>");
 		for (var i = 0; i < 4; i++) {
 			var row = json.data[i];
 			list.append("<h3><a href='"+row.url+"'>"+row.title+"</a></h3>");
