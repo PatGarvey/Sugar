@@ -129,21 +129,23 @@ $(document).ready(function() {
 		$.getJSON('http://scarlett.sugarcrm.com/sugar/rest/v10/documentation/videos/Get_Started/'+usertype, function(json, textStatus) {
 			var holder = $("section.video-content");
 
-			holder.append('<ul class="accordion">'+
-            '<li class="panel"><h2><a data-toggle="collapse" data-parent=".accordion" href="#learn-the-basis">Learn the Basics (Videos)</a></h2>'+
-              '<div class="row collapse in" id="learn-the-basis"></div></li></ul>'+
-'<div class="modal fade" id="videoPlayerModal" tabindex="-1" role="dialog" aria-labelledby="videoPlayerModal" aria-hidden="true">'+
-      '<div class="modal-dialog">'+
-        '<div class="modal-content">'+
-          '<div class="modal-body">'+
-            '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>'+
-            '<div>'+
-              '<iframe width="100%" height="350" src=""></iframe>'+
-            '</div>'+
-          '</div>'+
-        '</div>'+
-      '</div>'+
-    '</div>');
+			if(!$("section.video-content .accordion").length){
+				holder.append('<ul class="accordion">'+
+	            '<li class="panel"><h2><a data-toggle="collapse" data-parent=".accordion" href="#learn-the-basis">Learn the Basics (Videos)</a></h2>'+
+	            '<div class="row collapse in" id="learn-the-basis"></div></li></ul>'+
+				'<div class="modal fade" id="videoPlayerModal" tabindex="-1" role="dialog" aria-labelledby="videoPlayerModal" aria-hidden="true">'+
+				      '<div class="modal-dialog">'+
+				        '<div class="modal-content">'+
+				          '<div class="modal-body">'+
+				            '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>'+
+				            '<div>'+
+				              '<iframe width="100%" height="350" src=""></iframe>'+
+				            '</div>'+
+				          '</div>'+
+				        '</div>'+
+				      '</div>'+
+				    '</div>');
+			}
 
 			var videoholder = $("section.video-content .row");
 
