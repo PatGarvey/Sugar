@@ -321,6 +321,13 @@ var Tree = (function() {
         var ul = document.createElement('ul');
         ul.setAttribute('class', 'collapse');
         div.appendChild(ul);
+        var arrow = document.createElement('span');
+        arrow.setAttribute('class', 'arrow-down');
+        arrow.setAttribute('onClick', 'NavTree.showSiblings()');
+        arrow.setAttribute('data-toggle', 'collapse');
+        arrow.setAttribute('data-target', '#sibling');
+        div.appendChild(arrow);
+
         ul.setAttribute('id', 'sibling');
         var lastSibling;
         var mainElement;
@@ -557,7 +564,6 @@ var Tree = (function() {
                 var siblingList = NavTree.createSiblingList(branchParent.children, branch.name);
                 if (siblingList) {
                     $('#tree-title').append(siblingList);
-
                     //Add prev & next paging links
                     var localBranch = NavTree.findKey({
                         "href": url

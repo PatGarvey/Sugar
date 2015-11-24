@@ -922,7 +922,12 @@ footer .has-navmenu{
   /*background-color: #000000;  */
   border-bottom: 1px solid #5f5d62;
   padding: 15px 0;
+  /*background: url(../images/list_down.png) no-repeat center bottom;*/
+}
+
+#tree-title .arrow-down{
   background: url(../images/list_down.png) no-repeat center bottom;
+  padding: 0 120px 0 120px;
 }
 
 #tree-title.open{
