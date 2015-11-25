@@ -533,6 +533,12 @@ a.scroll-to-top.visible {
   opacity: 1;
 }
 
+@media (max-width:768px){
+  a.scroll-to-top {
+    font-size: 20px;
+  }
+}
+
 .content-body img{
   max-width: 100%;
   height: auto;
