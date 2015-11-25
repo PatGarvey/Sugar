@@ -500,6 +500,7 @@ ul.accordion > li {
 
 ul.accordion > li > h2 {
   margin: 0;
+  margin-bottom: 5px;
   padding: 0 0 5px;
 }
 
