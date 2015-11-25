@@ -193,6 +193,14 @@ $(function() {
       var edition = window.localStorage.getItem("edition").split("+").join(" ");
       $("#searchForm select[name='tag1']").selectpicker('val', window.localStorage.getItem("edition"));
     }
+    if (window.localStorage.getItem("version")) {
+      var edition = window.localStorage.getItem("version").split("+").join(" ");
+      $("#searchForm select[name='tag2']").selectpicker('val', window.localStorage.getItem("version"));
+    }
+    if (window.localStorage.getItem("usertype")) {
+      var edition = window.localStorage.getItem("usertype").split("+").join(" ");
+      $("#searchForm select[name='tag3']").selectpicker('val', window.localStorage.getItem("usertype"));
+    }
   }
 
 });
