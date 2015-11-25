@@ -936,6 +936,11 @@ footer .has-navmenu{
   padding: 0 120px 0 120px;
 }
 
+#tree-title.open .arrow-down{
+  background: url(../images/list_up.png) no-repeat center bottom;
+  padding: 0 120px 0 120px;
+}
+
 #tree-title.open{
   background-color: #000000;
   padding: 15px 0;
