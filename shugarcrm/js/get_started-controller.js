@@ -60,7 +60,7 @@ $(document).ready(function() {
 
 			// if (firstRun) {
 
-			if (window.localStorage) {
+			if (window.localStorage && window.localStorage.getItem("edition")) {
 				edition = window.localStorage.getItem("edition");
 				$("#groupEdition > .btn").each(function() {
 					if (edition.toLowerCase() == this.innerHTML.toLowerCase()) {
