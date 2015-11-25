@@ -79,7 +79,7 @@ var Tree = (function() {
         }
     };
     Tree.prototype.bold = function(obj) {
-        obj.name = "<b>" + obj.name + "</b>";
+        obj.name = "<b class='actual-bold'>" + obj.name + "</b>";
         return obj;
     };
     Tree.prototype.append = function(el, obj) {
@@ -498,7 +498,7 @@ var Tree = (function() {
         if (window.location.href.indexOf("http") > -1)
             searchPath = "/" + path;
         else
-            url = path = searchPath = "/Documentation/Sugar_Versions/7.6/Pro/Application_Guide/Getting_Started";
+            url = path = searchPath = "/Knowledge_Base/Administration/Studio_and_Module_Builder/Sugar_Logic/Sugar_Logic_Walkthrough_Tracking_a_Fields_History";
 
         var treeData = tree;
 
@@ -595,6 +595,11 @@ var Tree = (function() {
             $('[data-spy="scroll"]').each(function() {
                 var $spy = $(this).scrollspy('refresh');
             })
+
+            //Scroll to open bold element
+            if($(".actual-bold").length){
+                $("#navmenu").scrollTop($(".actual-bold").offset().top - 300);
+            }
 
 
             if (Utils.isMobile()) { 
