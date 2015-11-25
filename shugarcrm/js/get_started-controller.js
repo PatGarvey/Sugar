@@ -153,7 +153,7 @@ $(document).ready(function() {
 
 			$.each(json, function (key, value) {
 				var videoDiv = $('<div class="col-xs-6 col-md-3 video-item">'+
-					'<a href="#" class="thumbnail video-thumbnail video-trigger" data-video="'+value.url+'" data-toggle="modal" data-target="#videoPlayerModal"><img src="http://scarlett.sugarcrm.com/Sugar/shugarcrm/pictures/video.jpg"></a>'+
+					'<a href="#" class="thumbnail video-thumbnail video-trigger" data-video="'+value.url+'" data-toggle="modal" data-target="#videoPlayerModal"><img src="http://img.youtube.com/vi/'+getVideoID(value.url)+'/0.jpg"></a>'+
 	                  '<a href="#" class="video-trigger" data-toggle="modal" data-video="'+value.url+'" data-target="#videoPlayerModal">'+value.name+'</a>'+
 	                '</div>');
 				videoholder.append(videoDiv);
@@ -164,6 +164,13 @@ $(document).ready(function() {
 		    });
 
 		});
+	}
+
+	function getVideoID(url){
+		//http://img.youtube.com/vi/suddvf-Vcq0/0.jpg
+		//https://www.youtube.com/embed/suddvf-Vcq0
+		var id = url.split("/");
+		return id[id.length-1];
 	}
 
 
