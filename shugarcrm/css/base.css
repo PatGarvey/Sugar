@@ -15,13 +15,24 @@ body {
 }
 
 a {
-  color: #e61718;
+  color: #1774E6;
 }
 
-a:hover,
+a:hover {
+    color: #1262B3;
+    text-decoration: none;
+}
+
+a:focus {
+    color: #23527c;
+    text-decoration: underline;
+}
+
+
+/*a:hover,
 a:focus {
   color: #c00;
-}
+*}*/
 
 h1 {
   font-size: 24px;
@@ -43,7 +54,7 @@ h3,
 h4 {
   font-size: 14px;
   line-height: 20px;
-  color: #e61718;
+  color: #4c4f59;
   padding: 0;
   margin: 2px 0;
 }
@@ -103,6 +114,10 @@ table td{
   .project-header .navbar-right {
     margin-bottom: 0;
   }
+}
+
+.breadcrumbs a{
+  color: #e61718;
 }
 
 /**
@@ -626,7 +641,7 @@ a.video-thumbnail:hover {
 
 .content {
   line-height: 18px;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 300;
 }
 
