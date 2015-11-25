@@ -21,6 +21,9 @@ $(document).ready(function () {
 	if(path.split("/").length == 1 || path.indexOf("search") == 0)
 		$("section.content-heading").html("");
 
+	//Hide comment classes
+	$("section.content-body .comment").hide();
+
 	if(path.indexOf("Documentation") > -1){
 		//Documentation PAGES
 		loadScript(BASE_URL+"js/sugar-versions-controller.js");
