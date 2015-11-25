@@ -656,6 +656,7 @@ a.video-thumbnail:hover {
 .content .content-footer {
   border-top: 1px solid #e6e6e6;
   padding: 15px 0;
+  clear: both;
 }
 
 .content .content-footer .divider {
