@@ -31,7 +31,7 @@ var Search = (function() {
 
     var instance = this;
 
-    var count  = this.data.data.length;
+    var count = this.data.data.length;
     //Add Pagination control at bottom
     if (this.data.data.length > 9) {
       var search = window.location.search;
@@ -42,7 +42,7 @@ var Search = (function() {
 
       this.$pagination.html("<a href='" + search + "'>Next page >></a>");
 
-      count = (this.from +1)+ " - "+(this.from+10);
+      count = (this.from + 1) + " - " + (this.from + 10);
     }
 
     this.$results.html(tmpl('search_results', {
@@ -70,21 +70,21 @@ var Search = (function() {
       var index = this.id.split("_")[1];
 
       var tag = $(this).prev();
-      instance.removeTag(tag[0].innerHTML);     
+      instance.removeTag(tag[0].innerHTML);
 
     });
 
-    
+
 
   };
 
   //Removes a query Tag from the Search Query URL and does a new search
-  Search.prototype.removeTag = function(tag){
+  Search.prototype.removeTag = function(tag) {
     var search = window.location.search;
     var criteria = window.location.search.substr(1).split('&');
 
-    if(search.indexOf(tag) > -1){
-      search = search.substring(0, search.indexOf(tag)-6) + search.substring(search.indexOf(tag)+tag.length);
+    if (search.indexOf(tag) > -1) {
+      search = search.substring(0, search.indexOf(tag) - 6) + search.substring(search.indexOf(tag) + tag.length);
     }
     window.location.search = search;
   };
@@ -119,13 +119,13 @@ var Search = (function() {
     this.query = query;
 
     //Save Criteria to Local Storage
-    if(window.localStorage){
-      if(criteria[1].length > 6)
-        window.localStorage.setItem("edition",criteria[1].substr(5));
-      if(criteria[2].length > 6)
-        window.localStorage.setItem("version",criteria[2].substr(5));
-      if(criteria[3].length > 6)
-        window.localStorage.setItem("usertype",criteria[3].substr(5));
+    if (window.localStorage) {
+      if (criteria[1].length > 6)
+        window.localStorage.setItem("edition", criteria[1].substr(5));
+      if (criteria[2].length > 6)
+        window.localStorage.setItem("version", criteria[2].substr(5));
+      if (criteria[3].length > 6)
+        window.localStorage.setItem("usertype", criteria[3].substr(5));
     }
 
     // Generate query string
@@ -186,4 +186,13 @@ $(function() {
   'use strict';
 
   var search = new Search('#searchForm', '#search-box');
+
+  //Set search dropdowns from localStorage
+  if (window.localStorage) {
+    if (window.localStorage.getItem("edition")) {
+      var edition = window.localStorage.getItem("edition").split("+").join(" ");
+      $("#searchForm select[name='tag1']").selectpicker('val', window.localStorage.getItem("edition"));
+    }
+  }
+
 });
