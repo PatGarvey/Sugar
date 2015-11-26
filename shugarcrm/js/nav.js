@@ -586,6 +586,8 @@ var Tree = (function() {
                         $("#navmenu").offcanvas('hide');
                     window.location = link;
                 }
+
+                this.toggleClass('test');
             });
 
             //Scroll

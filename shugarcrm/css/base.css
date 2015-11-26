@@ -555,6 +555,10 @@ a.scroll-to-top.visible {
   }
 }
 
+a.test{
+  color: #123456;
+}
+
 .content-body img{
   max-width: 100%;
   height: auto;
