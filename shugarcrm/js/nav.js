@@ -587,7 +587,8 @@ var Tree = (function() {
                     window.location = link;
                 }
 
-                this.toggleClass('test');
+                $(this).toggleClass('test');
+                // $('#tree-navigation a').toggleClass('test');
             });
 
             //Scroll

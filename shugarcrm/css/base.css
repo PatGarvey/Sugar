@@ -557,6 +557,7 @@ a.scroll-to-top.visible {
 
 a.test{
   color: #123456;
+  margin-left: 15px;
 }
 
 .content-body img{
