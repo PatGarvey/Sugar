@@ -618,6 +618,11 @@ var Tree = (function() {
                 //Always fixed navmenu for mobile
                 $("#navmenu").removeClass("affix-top");
                 $("#navmenu").addClass("affix");
+
+                $(".content-navbar-toogle").click(function(event) {
+                    $("#navmenu").removeClass("affix-top");
+                    $("#navmenu").addClass("affix");
+                });
             }
 
         }
