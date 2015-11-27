@@ -19,6 +19,9 @@ var Search = (function() {
       this.updateForm();
       this.doSearch();
     }
+
+    this.setDropDownsFromLocalStorage();
+
   };
 
   /**
@@ -164,6 +167,26 @@ var Search = (function() {
       .done(this.render.bind(this));
   };
 
+
+  //Sets the top search dropdowns from previous search filter tags
+  Search.prototype.setDropDownsFromLocalStorage = function() {
+    //Set search dropdowns from localStorage
+    if (window.localStorage) {
+      if (window.localStorage.getItem("edition")) {
+        var edition = window.localStorage.getItem("edition").split("+").join(" ");
+        $("#searchForm select[name='tag1']").selectpicker('val', window.localStorage.getItem("edition"));
+      }
+      if (window.localStorage.getItem("version")) {
+        var edition = window.localStorage.getItem("version").split("+").join(" ");
+        $("#searchForm select[name='tag2']").selectpicker('val', window.localStorage.getItem("version"));
+      }
+      if (window.localStorage.getItem("usertype")) {
+        var edition = window.localStorage.getItem("usertype").split("+").join(" ");
+        $("#searchForm select[name='tag3']").selectpicker('val', edition);
+      }
+    }
+  }
+
   /**
    * Fetch data from remote API
    */
@@ -187,20 +210,6 @@ $(function() {
 
   var search = new Search('#searchForm', '#search-box');
 
-  //Set search dropdowns from localStorage
-  if (window.localStorage) {
-    if (window.localStorage.getItem("edition")) {
-      var edition = window.localStorage.getItem("edition").split("+").join(" ");
-      $("#searchForm select[name='tag1']").selectpicker('val', window.localStorage.getItem("edition"));
-    }
-    if (window.localStorage.getItem("version")) {
-      var edition = window.localStorage.getItem("version").split("+").join(" ");
-      $("#searchForm select[name='tag2']").selectpicker('val', window.localStorage.getItem("version"));
-    }
-    if (window.localStorage.getItem("usertype")) {
-      var edition = window.localStorage.getItem("usertype").split("+").join(" ");
-      $("#searchForm select[name='tag3']").selectpicker('val', window.localStorage.getItem("usertype"));
-    }
-  }
+  
 
 });
