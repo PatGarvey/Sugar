@@ -25,7 +25,7 @@ $(document).ready(function() {
 			usertype = window.localStorage.getItem("usertype");
 			if (usertype != null) {
 				$("#groupUserType > .btn").each(function() {
-					if (usertype.toLowerCase() == this.innerHTML.toLowerCase()) {
+					if (usertype.split("+").join(" ").toLowerCase() == this.innerHTML.toLowerCase()) {
 						this.click();
 					}
 				});
