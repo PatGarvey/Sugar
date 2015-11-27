@@ -591,6 +591,9 @@ var Tree = (function() {
                 // $('#tree-navigation a').toggleClass('test');
             });
 
+
+
+
             //Scroll
             $('body').scrollspy({
                 target: '#toc-body'
@@ -611,6 +614,10 @@ var Tree = (function() {
                    // console.log("swiperight");
                    $("#navmenu").offcanvas('toggle');
                 });
+
+                //Always fixed navmenu for mobile
+                $("#navmenu").removeClass("affix-top");
+                $("#navmenu").addClass("affix");
             }
 
         }
