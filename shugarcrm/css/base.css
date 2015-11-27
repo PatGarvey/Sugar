@@ -1019,6 +1019,9 @@ footer .has-navmenu{
   .content-navbar-toogle .navbar-toggle {
     display: block;
   }
+  .content .navmenu {
+    width: 250px;
+  }
 }
 
 @media (min-width: 768px) {
