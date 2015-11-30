@@ -3,6 +3,8 @@ var edition = "";
 var defalutEdition = "Professional";
 var version = "";
 
+var BASE_URL = "http://scarlett.sugarcrm.com/sugar/rest/v10/versions";
+
 
 //Button Bar CLICK - ALL
 $(".btn-group > .btn").click(function() {
@@ -74,7 +76,7 @@ function loadEditionVersion(version, edition) {
 
 //Load Editions & Versions from API
 var addVersions = function(parent) {
-  $.getJSON("http://scarlett.sugarcrm.com/sugar/rest/v10/versions/supported", function(data) {
+  $.getJSON(BASE_URL + "/supported?sort=DESC", function(data) {
     var items = [];
     $.each(data, function(key, val) {
       items.push('<button type="button" class="btn btn-default">' + val + "</button>");
@@ -94,7 +96,7 @@ var addVersions = function(parent) {
       $(this).addClass("active").siblings().removeClass("active");
       version = $(this).html();
       if (window.localStorage)
-        if(window.localStorage.getItem("edition"))
+        if (window.localStorage.getItem("edition"))
           edition = window.localStorage.getItem("edition");
         else
           edition = defalutEdition;
@@ -126,7 +128,7 @@ var addVersions = function(parent) {
 }
 
 var getEditions = function(parent, version) {
-  $.getJSON("http://scarlett.sugarcrm.com/sugar/rest/v10/versions/" + version + "/editions", function(data) {
+  $.getJSON(BASE_URL + "/" + version + "/editions?sort=DESC", function(data) {
     var items = [];
     $.each(data, function(key, val) {
       items.push('<button type="button" class="btn btn-default">' + val + "</button>");
