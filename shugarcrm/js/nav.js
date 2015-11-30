@@ -303,6 +303,7 @@ var Tree = (function() {
     Tree.prototype.addToc = function(data, path, tocChildren) {
         if (data["href"] == path) {
             data.children = tocChildren;
+            data.sort = "m";
         } else if (data.hasOwnProperty("children")) {
             var children = data.children;
             for (var i = 0; i < children.length; i++) {
@@ -380,7 +381,7 @@ var Tree = (function() {
         return result;
     };
     Tree.prototype.getHeaderTags = function() {
-        var order = 0;
+        var order = 1;
         var tags = [];
         $('.content-body h2').each(function() {
             var node = {
@@ -402,7 +403,7 @@ var Tree = (function() {
         return tags;
     };
     Tree.prototype.getLowestLevelLinks = function() {
-        var order = 0;
+        var order = 1;
         var tags = [];
         $('.content-body a').each(function() {
             var node = {
@@ -498,7 +499,7 @@ var Tree = (function() {
         if (window.location.href.indexOf("http") > -1)
             searchPath = "/" + path;
         else
-            url = path = searchPath = "/Knowledge_Base/Administration/Studio_and_Module_Builder/Sugar_Logic/Sugar_Logic_Walkthrough_Tracking_a_Fields_History";
+            url = path = searchPath = "/Documentation/Sugar_Versions/7.6/Pro/Sugar_7.6.1.0_Release_Notes";
 
         var treeData = tree;
 
