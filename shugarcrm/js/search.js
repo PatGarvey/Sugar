@@ -20,6 +20,7 @@ var Search = (function() {
       this.doSearch();
     }
 
+    this.getVersions();
     this.setDropDownsFromLocalStorage();
 
   };
@@ -167,6 +168,20 @@ var Search = (function() {
       .done(this.render.bind(this));
   };
 
+  Search.prototype.getVersions = function() {
+    var instance = this;
+    $.getJSON(BASE_URL_REST + "/v10/versions/supported?sort=DESC", function(data) {
+      var versions = [];
+      versions.push('<option value="">All Versions</option>');
+      $.each(data, function(key, val) {
+        versions.push('<option value="'+val+'">Sugar ' + val + "</option>");
+      });
+      var select = $("#searchForm select[name='tag2']");
+      select.html(versions.join(""));
+      select.selectpicker('refresh');
+      instance.setDropDownsFromLocalStorage();
+    });
+  }
 
   //Sets the top search dropdowns from previous search filter tags
   Search.prototype.setDropDownsFromLocalStorage = function() {

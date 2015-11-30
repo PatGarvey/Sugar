@@ -1,4 +1,5 @@
 var BASE_URL = "http://scarlett.sugarcrm.com/Sugar/shugarcrm/";
+var BASE_URL_REST = "http://scarlett.sugarcrm.com/sugar/rest";///v10/versions";
 
 $(document).ready(function () {
 
