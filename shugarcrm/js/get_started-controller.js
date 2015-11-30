@@ -89,6 +89,10 @@ $(document).ready(function() {
 
 		var url = "/Get_Started/" + Utils.replaceSpaceToUnderScore(usertype);
 		if (edition != "")
+			//Community exception
+			if(edition == "Community"){
+				edition = "Community Edition";
+			}
 			url += "/" + Utils.replaceSpaceToUnderScore(edition);
 		var branch = Utils.findKey({
 			href: url
