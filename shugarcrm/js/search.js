@@ -20,9 +20,7 @@ var Search = (function() {
       this.doSearch();
     }
 
-    this.getVersions();
-    this.setDropDownsFromLocalStorage();
-
+    this.populateDropdowns();
   };
 
   /**
@@ -168,20 +166,39 @@ var Search = (function() {
       .done(this.render.bind(this));
   };
 
-  Search.prototype.getVersions = function() {
-    var instance = this;
-    $.getJSON(BASE_URL_REST + "/v10/versions/supported?sort=DESC", function(data) {
-      var versions = [];
-      versions.push('<option value="">All Versions</option>');
-      $.each(data, function(key, val) {
-        versions.push('<option value="'+val+'">Sugar ' + val + "</option>");
-      });
-      var select = $("#searchForm select[name='tag2']");
-      select.html(versions.join(""));
-      select.selectpicker('refresh');
-      instance.setDropDownsFromLocalStorage();
-    });
+  Search.prototype.populateDropdowns = function() {
+    this.getDropDown("editions", "tag1");
+    this.getDropDown("versions", "tag2");
+    this.getDropDown("users", "tag3");
   }
+
+  Search.prototype.setDropDown = function(versions, tag) {
+    var select = $("#searchForm select[name='" + tag + "']");
+    select.html(versions.join(""));
+    select.selectpicker('refresh');
+    this.setDropDownsFromLocalStorage();
+  }
+
+  Search.prototype.getDropDown = function(url, tag) {
+    var instance = this;
+
+    if (window.localStorage &&
+      window.localStorage.getItem("search_" + url) &&
+      window.localStorage.getItem("search_" + url).length > 0) {
+      this.setDropDown(window.localStorage.getItem("search_" + url).split(","), tag);
+    } else {
+      $.getJSON(BASE_URL_REST + "/v10/documentation/dropdown/" + url, function(data) {
+        var versions = [];
+        $.each(data, function(key, val) {
+          versions.push('<option value="' + key + '">' + val + "</option>");
+        });
+        instance.setDropDown(versions, tag);
+        window.localStorage.setItem("search_" + url, versions);
+      });
+    }
+  }
+
+
 
   //Sets the top search dropdowns from previous search filter tags
   Search.prototype.setDropDownsFromLocalStorage = function() {
@@ -189,15 +206,15 @@ var Search = (function() {
     if (window.localStorage) {
       if (window.localStorage.getItem("edition")) {
         var edition = window.localStorage.getItem("edition").split("+").join(" ");
-        $("#searchForm select[name='tag1']").selectpicker('val', window.localStorage.getItem("edition"));
+        $("#searchForm select[name='tag1']").selectpicker('val', edition);
       }
       if (window.localStorage.getItem("version")) {
-        var edition = window.localStorage.getItem("version").split("+").join(" ");
-        $("#searchForm select[name='tag2']").selectpicker('val', window.localStorage.getItem("version"));
+        var version = window.localStorage.getItem("version").split("+").join(" ");
+        $("#searchForm select[name='tag2']").selectpicker('val', version);
       }
       if (window.localStorage.getItem("usertype")) {
-        var edition = window.localStorage.getItem("usertype").split("+").join(" ");
-        $("#searchForm select[name='tag3']").selectpicker('val', edition);
+        var usertype = window.localStorage.getItem("usertype").split("+").join(" ");
+        $("#searchForm select[name='tag3']").selectpicker('val', usertype);
       }
     }
   }
@@ -225,6 +242,6 @@ $(function() {
 
   var search = new Search('#searchForm', '#search-box');
 
-  
+
 
 });
