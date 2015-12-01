@@ -113,7 +113,7 @@ var addVersions = function(parent) {
     }
 
     //Auto Select first
-    if (version == "") {
+    if (version == "" || version == null) {
       $("#groupVersion > .btn:nth-child(1)").click();
     } else {
       $("#groupVersion > .btn").each(function() {
@@ -161,7 +161,7 @@ var getEditions = function(parent, version) {
     });
 
     //Auto Select first
-    if (edition == "") {
+    if (edition == "" || edition == null) {
       $("#groupEdition > .btn:nth-child(1)").click();
     } else {
       $("#groupEdition > .btn").each(function() {
