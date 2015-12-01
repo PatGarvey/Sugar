@@ -499,16 +499,20 @@ var Tree = (function() {
         if (window.location.href.indexOf("http") > -1)
             searchPath = "/" + path;
         else
-            url = path = searchPath = "/Documentation/Sugar_Versions/7.6/Pro/Sugar_7.6.1.0_Release_Notes";
+            url = path = searchPath = "/Documentation/Sugar_Versions/6.7/Ent/Application_Guide/Reports";
 
         var treeData = tree;
 
         NavTree.sitemapjs = tree;
 
-        
-        var originalBranch = NavTree.findKey({ "href": searchPath }, treeData);
+
+        var originalBranch = NavTree.findKey({
+            "href": searchPath
+        }, treeData);
         searchPath = NavTree.getJunctionForPath(searchPath, treeData);
-        var branch = NavTree.findKey({ "href": searchPath }, treeData);
+        var branch = NavTree.findKey({
+            "href": searchPath
+        }, treeData);
         // if(parentGuideBranch.disable_nav == 0){
         // }
 
@@ -583,7 +587,7 @@ var Tree = (function() {
                 var el = $(this);
                 var link = el.attr('href');
                 if (Utils.isMobile()) {
-                    if($(".content-navbar-toogle").visible())
+                    if ($(".content-navbar-toogle").visible())
                         $("#navmenu").offcanvas('hide');
                     window.location = link;
                 }
@@ -591,7 +595,6 @@ var Tree = (function() {
                 $(this).toggleClass('test');
                 // $('#tree-navigation a').toggleClass('test');
             });
-
 
 
 
@@ -604,16 +607,25 @@ var Tree = (function() {
             })
 
             //Scroll to open bold element
-            if($(".actual-bold").length){
-                $("#navmenu").scrollTop($(".actual-bold").offset().top - 300);
+            if ($(".actual-bold").length) {
+                var offset = $(".actual-bold").offset().top;
+                // $("#tree-navigation").scrollTop($(".actual-bold").offset().top - 300);
+                // $("#navmenu").scrollTop(200);
+                setTimeout(function() {
+                    $("#navmenu").animate({
+                        scrollTop: $(".actual-bold").offset().top - 300
+                    }, 400);
+                }, 200);
+
+
             }
 
 
-            if (Utils.isMobile()) { 
+            if (Utils.isMobile()) {
                 //Swipe Gestures
-                $(".content-body").on("swiperight", function (e) {
-                   // console.log("swiperight");
-                   $("#navmenu").offcanvas('toggle');
+                $(".content-body").on("swiperight", function(e) {
+                    // console.log("swiperight");
+                    $("#navmenu").offcanvas('toggle');
                 });
 
                 //Always fixed navmenu for mobile
