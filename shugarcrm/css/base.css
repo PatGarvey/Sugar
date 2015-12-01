@@ -353,6 +353,10 @@ table td{
   top: 7px;
 }
 
+.navbar-right .create-ticket{
+    display: none;
+}
+
 @media (min-width: 768px) {
   .sub-navigation .nav li a {
     padding: 15px 15px;
@@ -363,6 +367,14 @@ table td{
     padding: 5px 10px;
     top: 10px;
     display: none;
+  }
+
+  .navbar-right .create-ticket{
+    display: block;
+    float: right;
+    padding: 6px;
+    margin-right: 10px;
+    opacity: 0.66;
   }
 }
 
@@ -377,6 +389,10 @@ table td{
     top: 18px;
     padding: 8px 20px;
     display: block;
+  }
+
+  .navbar-right .create-ticket{
+    display: none;
   }
 }
 
