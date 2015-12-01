@@ -54,7 +54,7 @@ function loadEditionVersion(version, edition) {
           break;
       }
       // cols.push('<div class="col-sm-6 col-md-3 content-col"><h2>' + key + '</h2>' + holder.html() + '</div>');
-      cols[index] = '<div class="col-sm-6 col-md-3 content-col"><h2>' + key + '</h2>' + holder.html() + '</div>';
+      cols[index] = '<div class="col-sm-6 col-md-3 col-lg-15 content-col"><h2>' + key + '</h2>' + holder.html() + '</div>';
     });
 
     $(".content-section").html("");
