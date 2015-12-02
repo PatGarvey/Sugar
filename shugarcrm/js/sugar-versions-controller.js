@@ -1,6 +1,6 @@
 var path = window.location.href.replace(/^https?:\/\/[^\/]+\//i, "").replace(/\/$/, "");
 var edition = "";
-var defalutEdition = "Professional";
+var defalutEdition = "Ultimate";
 var version = "";
 
 var BASE_URL = "http://scarlett.sugarcrm.com/sugar/rest/v10/versions";
