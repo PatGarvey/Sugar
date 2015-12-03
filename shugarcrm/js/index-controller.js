@@ -18,7 +18,7 @@ $(document).ready(function() {
 		dataType: "text",
 		success: function(xml) {
 			//TODO add #id
-			var list = $("section.content-section > div.row > div:nth-child(3)");
+			var list = $("section.content-section > div.row > div:nth-child(1)");
 			list.html("");
 			list.append("<h2>Latest News</h2>");
 			for (var i = 0; i < 4; i++) {
