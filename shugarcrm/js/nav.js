@@ -559,7 +559,7 @@ var Tree = (function() {
             NavTree.setData(branch);
             var content = document.querySelector('#tree-navigation-content .widget-body');
             NavTree.init(url);
-            NavTree.setHover();
+            // NavTree.setHover();
 
             $('#tree-title').html("");
             var branchParent = NavTree.findKey({
