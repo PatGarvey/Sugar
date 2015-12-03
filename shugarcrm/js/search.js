@@ -40,9 +40,13 @@ var Search = (function() {
       if (search.indexOf("from") > -1) {
         search = search.substring(0, search.indexOf("&from"));
       }
-      search += "&from=" + (this.from + 10);
+      var searchPrev = search+"&from=" + (this.from - 10);
+      var searchNext = search+"&from=" + (this.from + 10);
 
-      this.$pagination.html("<a href='" + search + "'>Next page >></a>");
+      this.$pagination.html("");
+      if(this.from > 9)
+        this.$pagination.append("<a href='" + searchPrev + "' class='pull-left'><< Previous page</a>");
+      this.$pagination.append("<a href='" + searchNext + "' class='pull-right'>Next page >></a>");
 
       count = (this.from + 1) + " - " + (this.from + 10);
     }

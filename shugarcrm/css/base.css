@@ -780,6 +780,10 @@ a.video-thumbnail:hover {
   line-height: 21px;
 }
 
+.pagination{
+  width: 100%;
+}
+
 /*
 * Star ratings
 */
