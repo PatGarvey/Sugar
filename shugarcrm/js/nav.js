@@ -609,6 +609,7 @@ var Tree = (function() {
             //Scroll to open bold element
             if ($(".actual-bold").length) {
                 var offset = $(".actual-bold").offset().top;
+                console.log("offset:"+offset);
                 // $("#tree-navigation").scrollTop($(".actual-bold").offset().top - 300);
                 // $("#navmenu").scrollTop(200);
                 setTimeout(function() {
