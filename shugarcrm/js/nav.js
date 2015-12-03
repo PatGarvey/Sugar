@@ -615,7 +615,7 @@ var Tree = (function() {
                     $("#navmenu").animate({
                         scrollTop: $(".actual-bold").offset().top - 300
                     }, 400);
-                }, 200);
+                }, 1000);
 
 
             }
