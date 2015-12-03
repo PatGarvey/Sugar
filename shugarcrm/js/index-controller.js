@@ -12,6 +12,8 @@ $(document).ready(function() {
 	//Get Last Modified pages
 	$.ajax({
 		type: "GET",
+		crossDomain: true,
+        // headers: { 'Access-Control-Allow-Origin': '*' },
 		url: "https://community.sugarcrm.com/view-browse-feed.jspa?filterID=all~objecttype~objecttype%5Bblogpost%5D&browseSite=content&userIDs=-1&browseViewID=content",
 		dataType: "text",
 		success: function(xml) {
@@ -24,6 +26,9 @@ $(document).ready(function() {
 				list.append("<h3><a href='" + row.url + "'>" + row.title + "</a></h3>");
 				list.append("<p>" + row.summary + "</p>");
 			}
+		},
+		error: function(error){
+			console.log("error "+error);
 		}
 	});
 	// $.getJSON('http://scarlett.sugarcrm.com/public/api/v1/search?q=*&sort=modified:desc&size=10', function(json, textStatus) {
