@@ -109,7 +109,7 @@ var Search = (function() {
       } else if (criteria[i].indexOf('from') > -1) {
         this.from = Math.floor(criteria[i].substr(5));
       } else {
-        query = criteria[i].substr(2);
+        query = decodeURI(criteria[i].substr(2));
       }
     }
 
