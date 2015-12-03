@@ -2,20 +2,32 @@
 
 $(document).ready(function() {
 
+	// jQuery.getFeed({
+	//    url: 'rss.xml',
+	//    success: function(feed) {
+	//      alert(feed.title);
+	//    }
+	//  });
+
 	//Get Last Modified pages
-	$.getJSON('http://scarlett.sugarcrm.com/public/api/v1/search?q=*&sort=modified:desc&size=10', function(json, textStatus) {
-		//TODO add #id
-		var list = $("section.content-section > div.row > div:nth-child(1)");
-		list.html("");
-		list.append("<h2>Latest News</h2>");
-		for (var i = 0; i < 4; i++) {
-			var row = json.data[i];
-			list.append("<h3><a href='"+row.url+"'>"+row.title+"</a></h3>");
-			list.append("<p>"+row.summary+"</p>");
+	$.ajax({
+		type: "GET",
+		url: "https://community.sugarcrm.com/view-browse-feed.jspa?filterID=all~objecttype~objecttype%5Bblogpost%5D&browseSite=content&userIDs=-1&browseViewID=content",
+		dataType: "text",
+		success: function(xml) {
+			//TODO add #id
+			var list = $("section.content-section > div.row > div:nth-child(3)");
+			list.html("");
+			list.append("<h2>Latest News</h2>");
+			for (var i = 0; i < 4; i++) {
+				var row = xml.channel[i];
+				list.append("<h3><a href='" + row.url + "'>" + row.title + "</a></h3>");
+				list.append("<p>" + row.summary + "</p>");
+			}
 		}
-
-
 	});
+	// $.getJSON('http://scarlett.sugarcrm.com/public/api/v1/search?q=*&sort=modified:desc&size=10', function(json, textStatus) {
+
 	//Get Most Popular pages
 	$.getJSON('http://scarlett.sugarcrm.com/public/api/v1/search?q=*&sort=rating:desc&size=10', function(json, textStatus) {
 
@@ -25,8 +37,8 @@ $(document).ready(function() {
 		list.append("<h2>Popular Topics</h2>");
 		for (var i = 0; i < 4; i++) {
 			var row = json.data[i];
-			list.append("<h3><a href='"+row.url+"'>"+row.title+"</a></h3>");
-			list.append("<p>"+row.summary+"</p>");
+			list.append("<h3><a href='" + row.url + "'>" + row.title + "</a></h3>");
+			list.append("<p>" + row.summary + "</p>");
 		}
 	});
 
