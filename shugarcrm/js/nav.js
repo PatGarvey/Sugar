@@ -616,7 +616,7 @@ var Tree = (function() {
                     $("#navmenu").animate({
                         scrollTop: $(".actual-bold").offset().top - 300
                     }, 400);
-                    console.log("scroll:"+(offset - 300));
+                    console.log("scroll:"+(offset - 300)+" height:"+$("#navmenu").height());
                 }, 1000);
 
 
