@@ -600,7 +600,7 @@ var Tree = (function() {
             $('#tree-navigation a').on('click touchend', function(e) {
                 var el = $(this);
                 var link = el.attr('href');
-                alert("Utils.isMobile() "+Utils.isMobile());
+                
                 if (Utils.isMobile()) {
                     if ($(".content-navbar-toogle").visible())
                         $("#navmenu").offcanvas('hide');
