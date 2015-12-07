@@ -312,8 +312,11 @@ var Tree = (function() {
                 $.each(childpages, function(index, val) {
                     val.order += tocChildren.length + 1;    
                 });
+                data.children = tocChildren.concat(childpages);
+            }else{
+                data.children = tocChildren;
             }
-            data.children = tocChildren.concat(childpages);
+            
             data.sort = "m";
         } else if (data.hasOwnProperty("children")) {
             var children = data.children;
@@ -510,7 +513,7 @@ var Tree = (function() {
         if (window.location.href.indexOf("http") > -1)
             searchPath = "/" + path;
         else
-            url = path = searchPath = "/Documentation/Sugar_Versions/6.7/Ent/Application_Guide/Reports";
+            url = path = searchPath = "/Documentation/Sugar_Versions/7.6/Ent/Application_Guide/Introduction";
 
         var treeData = tree;
 
