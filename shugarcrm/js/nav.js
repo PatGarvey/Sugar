@@ -302,7 +302,8 @@ var Tree = (function() {
     };
     Tree.prototype.addToc = function(data, path, tocChildren) {
         if (data["href"] == path) {
-            data.children = data.children.concat(tocChildren);
+            var childpages = data.children;
+            data.children = tocChildren.concat(childpages);
             data.sort = "m";
         } else if (data.hasOwnProperty("children")) {
             var children = data.children;
