@@ -149,7 +149,7 @@ var Search = (function() {
       $input = $('[name=' + criteria[0] + ']');
       $filter = $('[name=filter_' + criteria[0] + ']');
 
-      value = Utils.stripTags(criteria[1]);
+      value = decodeURI(Utils.stripTags(criteria[1]));
 
       $input.val(value);
       $filter.val(value);
