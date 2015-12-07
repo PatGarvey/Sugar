@@ -179,12 +179,13 @@ var Tree = (function() {
         } else {
             var a = document.createElement('a');
             a.setAttribute('href', NavTree.origin + item.href);
-            a.innerHTML = item.name;
-            if(item.offset){
-                a.setAttribute('class', 'offset');
-            }
+            a.innerHTML = item.name;            
             li.appendChild(a);
         }
+        if(item.offset){
+            li.setAttribute('class', 'offset');
+        }
+
         return li;
     };
     Tree.prototype.getId = function(id) {
