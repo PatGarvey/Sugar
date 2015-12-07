@@ -180,6 +180,9 @@ var Tree = (function() {
             var a = document.createElement('a');
             a.setAttribute('href', NavTree.origin + item.href);
             a.innerHTML = item.name;
+            if(item.offset){
+                a.setAttribute('class', 'offset');
+            }
             li.appendChild(a);
         }
         return li;
@@ -304,8 +307,9 @@ var Tree = (function() {
         if (data["href"] == path) {
             if(data.children.length > 0){
                 var childpages = data.children;
+                childpages[0].offset = 1;
                 $.each(childpages, function(index, val) {
-                    val.order += tocChildren.length;    
+                    val.order += tocChildren.length + 1;    
                 });
             }
             data.children = tocChildren.concat(childpages);
