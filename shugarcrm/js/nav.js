@@ -302,7 +302,12 @@ var Tree = (function() {
     };
     Tree.prototype.addToc = function(data, path, tocChildren) {
         if (data["href"] == path) {
-            var childpages = data.children;
+            if(data.children.length > 0){
+                var childpages = data.children;
+                $.each(childpages, function(index, val) {
+                    val.order += tocChildren.length;    
+                });
+            }
             data.children = tocChildren.concat(childpages);
             data.sort = "m";
         } else if (data.hasOwnProperty("children")) {
