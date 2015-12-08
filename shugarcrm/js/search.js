@@ -40,11 +40,11 @@ var Search = (function() {
       if (search.indexOf("from") > -1) {
         search = search.substring(0, search.indexOf("&from"));
       }
-      var searchPrev = search+"&from=" + (this.from - 10);
-      var searchNext = search+"&from=" + (this.from + 10);
+      var searchPrev = search + "&from=" + (this.from - 10);
+      var searchNext = search + "&from=" + (this.from + 10);
 
       this.$pagination.html("");
-      if(this.from > 9)
+      if (this.from > 9)
         this.$pagination.append("<a href='" + searchPrev + "' class='pull-left'><< Previous page</a>");
       this.$pagination.append("<a href='" + searchNext + "' class='pull-right'>Next page >></a>");
 
@@ -127,15 +127,17 @@ var Search = (function() {
     //Save Criteria to Local Storage
     if (window.localStorage) {
       // if (criteria[1].length > 6)
-        window.localStorage.setItem("edition", criteria[1].substr(5));
+      window.localStorage.setItem("edition", criteria[1].substr(5));
       // if (criteria[2].length > 6)
-        window.localStorage.setItem("version", criteria[2].substr(5));
+      window.localStorage.setItem("version", criteria[2].substr(5));
       // if (criteria[3].length > 6)
-        window.localStorage.setItem("usertype", criteria[3].substr(5));
+      window.localStorage.setItem("usertype", criteria[3].substr(5));
     }
 
     // Generate query string
-    this.queryString = 'q=' + (query ? query + (tags.length ? ' AND ' : '') : '') + (tags.length ? 'tags:' + tags.join(' AND tags:') : '');
+    this.queryString = 'q=' + (query ? query + (tags.length ? ' AND ' : '') : '') 
+    + (tags.length ? 'tags:' + tags.join(' AND tags:') : '')
+    + (this.from ? '&from=' + this.from : '');
   };
 
   /**
