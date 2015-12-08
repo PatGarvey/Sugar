@@ -78,6 +78,9 @@
 
       return str.replace(replace, ' ');
     },
+    removeQuotes: function(str) {
+      return str.replace(/['"]+/g, '')
+    },
     getAbbreviatedEdition: function(edition) {
       var ed = "";
       switch (edition) {
