@@ -308,7 +308,7 @@ var Tree = (function() {
         if (data["href"] == path) {
             if(data.children.length > 0){
                 var childpages = data.children;
-                childpages[0].offset = 1;
+                childpages[childpages.length-1].offset = 1;
                 $.each(childpages, function(index, val) {
                     val.order += tocChildren.length + 1;    
                 });
@@ -513,7 +513,7 @@ var Tree = (function() {
         if (window.location.href.indexOf("http") > -1)
             searchPath = "/" + path;
         else
-            url = path = searchPath = "/Documentation/Sugar_Versions/7.6/Ent/Application_Guide/Introduction";
+            url = path = searchPath = "/Documentation/Sugar_Versions/7.5/Ent/Application_Guide/User_Interface";
 
         var treeData = tree;
 
