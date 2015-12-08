@@ -33,7 +33,7 @@ $(document).ready(function() {
 	});
 
 	//Get Last Modified pages
-	$.getJSON('http://scarlett.sugarcrm.com/public/api/v1/search?q=*&sort=modified:desc&size=10', function(json, textStatus) {
+	$.getJSON('http://scarlett.sugarcrm.com/sugar/rest/v10/documentation/search?q=*&sort=modified:desc&size=10', function(json, textStatus) {
 		//TODO add #id
 		var list = $("section.content-section > div.row > div:nth-child(3)");
 		list.html("");
@@ -46,7 +46,7 @@ $(document).ready(function() {
 	});
 
 	//Get Most Popular pages
-	$.getJSON('http://scarlett.sugarcrm.com/public/api/v1/search?q=*&sort=rating:desc&size=10', function(json, textStatus) {
+	$.getJSON('http://scarlett.sugarcrm.com/sugar/rest/v10/documentation/search?q=*&sort=rating:desc&size=10', function(json, textStatus) {
 
 		//TODO add #id
 		var list = $("section.content-section > div.row > div:nth-child(2)");
