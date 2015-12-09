@@ -625,7 +625,7 @@ var Tree = (function() {
             if ($(".actual-bold").length) {
                 var offset = $(".actual-bold").offset().top;
                 if($("#navmenu").height() > $(window).height())
-                    $("#navmenu").height() = $(window).height();
+                    $("#navmenu").height($(window).height());
                 console.log("offset:" + offset + " height:" + $("#navmenu").height());  
                 setTimeout(function() {
                     $("#navmenu").animate({
