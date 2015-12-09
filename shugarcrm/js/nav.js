@@ -625,11 +625,12 @@ var Tree = (function() {
             if ($(".actual-bold").length) {
                 var offset = $(".actual-bold").offset().top;
                 console.log("offset:" + offset + " height:" + $("#navmenu").height());
-                // $("#tree-navigation").scrollTop($(".actual-bold").offset().top - 300);
-                // $("#navmenu").scrollTop(200);
+                if(offset < $("#navmenu").height()){
+                    offset = $("#navmenu").height() + 400;
+                }
                 setTimeout(function() {
                     $("#navmenu").animate({
-                        scrollTop: $(".actual-bold").offset().top - 300
+                        scrollTop: offset - 300
                     }, 400);
                     console.log("scroll:" + (offset - 300) + " height:" + $("#navmenu").height());
                 }, 1000);
