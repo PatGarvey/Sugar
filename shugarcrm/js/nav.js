@@ -179,10 +179,10 @@ var Tree = (function() {
         } else {
             var a = document.createElement('a');
             a.setAttribute('href', NavTree.origin + item.href);
-            a.innerHTML = item.name;            
+            a.innerHTML = item.name;
             li.appendChild(a);
         }
-        if(item.offset){
+        if (item.offset) {
             li.setAttribute('class', 'offset');
         }
 
@@ -306,17 +306,17 @@ var Tree = (function() {
     };
     Tree.prototype.addToc = function(data, path, tocChildren) {
         if (data["href"] == path) {
-            if(data.children.length > 0){
+            if (data.children.length > 0) {
                 var childpages = data.children;
-                childpages[childpages.length-1].offset = 1;
+                childpages[childpages.length - 1].offset = 1;
                 $.each(childpages, function(index, val) {
-                    val.order += tocChildren.length + 1;    
+                    val.order += tocChildren.length + 1;
                 });
                 data.children = tocChildren.concat(childpages);
-            }else{
+            } else {
                 data.children = tocChildren;
             }
-            
+
             data.sort = "m";
         } else if (data.hasOwnProperty("children")) {
             var children = data.children;
@@ -624,14 +624,14 @@ var Tree = (function() {
             //Scroll to open bold element
             if ($(".actual-bold").length) {
                 var offset = $(".actual-bold").offset().top;
-                console.log("offset:"+offset);
+                console.log("offset:" + offset + " height:" + $("#navmenu").height());
                 // $("#tree-navigation").scrollTop($(".actual-bold").offset().top - 300);
                 // $("#navmenu").scrollTop(200);
                 setTimeout(function() {
                     $("#navmenu").animate({
                         scrollTop: $(".actual-bold").offset().top - 300
                     }, 400);
-                    console.log("scroll:"+(offset - 300)+" height:"+$("#navmenu").height());
+                    console.log("scroll:" + (offset - 300) + " height:" + $("#navmenu").height());
                 }, 1000);
 
 
