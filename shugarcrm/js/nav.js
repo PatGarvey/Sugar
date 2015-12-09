@@ -624,10 +624,9 @@ var Tree = (function() {
             //Scroll to open bold element
             if ($(".actual-bold").length) {
                 var offset = $(".actual-bold").offset().top;
-                console.log("offset:" + offset + " height:" + $("#navmenu").height());
-                if(offset < $("#navmenu").height()){
-                    offset = $("#navmenu").height() + 400;
-                }
+                if($("#navmenu").height() > $(window).height())
+                    $("#navmenu").height() = $(window).height();
+                console.log("offset:" + offset + " height:" + $("#navmenu").height());  
                 setTimeout(function() {
                     $("#navmenu").animate({
                         scrollTop: offset - 300
