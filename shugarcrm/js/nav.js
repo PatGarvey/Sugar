@@ -308,10 +308,13 @@ var Tree = (function() {
         if (data["href"] == path) {
             if (data.children.length > 0) {
                 var childpages = data.children;
-                childpages[childpages.length - 1].offset = 1;
+                var firstElem = childpages[0];
                 $.each(childpages, function(index, val) {
                     val.order += tocChildren.length + 1;
+                    if(firstElem.order > val.order)
+                        firstElem = val;
                 });
+                firstElem.offset = 1;
                 data.children = tocChildren.concat(childpages);
             } else {
                 data.children = tocChildren;
